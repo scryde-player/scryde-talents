@@ -6,6 +6,10 @@ export enum PanelVariant {
 
 export enum Profession {
   Necromancer = "Necromancer",
+  Warlord = "Warlord",
+  Gladiator = "Gladiator",
+  Paladin = "Paladin",
+  DarkAvanger = "Dark Avanger"
 }
 
 export const SKILLS_LIMIT_PER_TIER_PER_SKILLSET = [8, 8, 8, 3, 1, 1];

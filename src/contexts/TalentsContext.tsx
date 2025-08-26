@@ -3,6 +3,7 @@
 import {
   SKILLS_CONDITION_PER_TIER_PER_SKILLSET,
   SKILLS_LIMIT_PER_TIER_PER_SKILLSET,
+  MAX_POINTS
 } from "@/lib/constants";
 import { TalentSkill, TalentSkillset } from "@/types/talents";
 import React, {
@@ -35,8 +36,6 @@ interface TalentsProviderProps {
   initialSkills?: Record<string, number>;
   initialPanels?: Record<string, number>;
 }
-
-const MAX_POINTS = 58;
 
 export const TalentsProvider: React.FC<TalentsProviderProps> = ({
   children,

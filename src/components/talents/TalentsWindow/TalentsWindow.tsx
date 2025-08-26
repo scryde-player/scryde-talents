@@ -1,6 +1,8 @@
 import { TalentsWindowProps } from "@/types/talents";
 import { TalentsPanel } from "../TalentsPanel";
-import { PanelVariant } from "@/lib/constants";
+import { 
+  PanelVariant, 
+  MAX_POINTS } from "@/lib/constants";
 import { SKILLSETS } from "@/lib/skillsets";
 import { useTalents } from "@/contexts/TalentsContext";
 import styles from "./TalentsWindow.module.css";
@@ -54,7 +56,10 @@ export const TalentsWindow = ({ profession }: TalentsWindowProps) => {
 
       {/* Кнопка Сброс */}
       <div className={styles.resetButton}>
-        <ResetButton onReset={reset} />
+        <ResetButton 
+          onReset={reset} 
+          isAvailable={availablePoints !== MAX_POINTS}
+        />
       </div>
     </div>
   );

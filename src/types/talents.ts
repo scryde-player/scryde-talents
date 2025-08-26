@@ -32,4 +32,5 @@ export interface TalentsSkillProps {
 
 export interface ResetButonProps {
   onReset: () => void;
+  isAvailable: boolean;
 }

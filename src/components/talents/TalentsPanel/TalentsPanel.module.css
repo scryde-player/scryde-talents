@@ -1,0 +1,32 @@
+.panel {
+  width: 314px;
+  height: 557px;
+  background-size: cover;
+  position: relative;
+}
+
+.skillsGrid {
+  position: absolute;
+  top: 80px;
+  left: 26px;
+  display: grid;
+  grid-template-columns: repeat(4, 72px);
+  grid-template-rows: repeat(6, 80px);
+  gap: 0px;
+}
+
+.skillSlot {
+  width: 72px;
+  height: 80px;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+}
+
+.skillsCounter {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 37px;
+  text-align: center;
+}

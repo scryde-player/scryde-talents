@@ -1,0 +1,44 @@
+.skill {
+  width: 61px;
+  height: 52px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("/assets/images/background-skill.png");
+  position: relative;
+  user-select: none;
+}
+
+.skillImage {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  z-index: 1;
+  background-size: cover;
+}
+
+.skillImageActive {
+  background-position-x: 40px;
+}
+
+.levelIndicator {
+  position: absolute;
+  z-index: 2;
+  top: 34px;
+  left: 28px;
+  width: 32px;
+  height: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0e0a09;
+  border: 1px solid #685f42;
+}
+
+.levelText {
+  color: #ffffff;
+  font-size: 8px;
+  text-shadow: 1px 1px 1px #010101;
+}

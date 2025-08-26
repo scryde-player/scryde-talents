@@ -1,0 +1,1 @@
+export { TalentsSkill } from "./TalentsSkill";

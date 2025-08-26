@@ -1,0 +1,1 @@
+export { TalentsWindow } from "./TalentsWindow";

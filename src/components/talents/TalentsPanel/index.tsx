@@ -1,0 +1,1 @@
+export { TalentsPanel } from "./TalentsPanel";

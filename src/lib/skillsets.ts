@@ -43,5 +43,5 @@ const mockSkillset = (id: string): TalentSkillset => ({
 export const SKILLSETS: { [key: string]: TalentSkillset } = {
   Berserk: commonSkillset("berserk"),
   Guardian: commonSkillset("guardian"),
-  ShillienKnight: commonSkillset("shillienknight"),
+  ThreasureHunter: commonSkillset("ThreasureHunter"),
 };

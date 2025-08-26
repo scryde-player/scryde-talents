@@ -15,7 +15,7 @@ export default function Home() {
       }}
     >
       <TalentsProvider>
-        <TalentsWindow profession={Profession.Warlord} />
+        <TalentsWindow profession={Profession.ShillienKnight} />
       </TalentsProvider>
     </main>
   );

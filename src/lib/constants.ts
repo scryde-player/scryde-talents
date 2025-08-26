@@ -9,7 +9,9 @@ export enum Profession {
   Warlord = "Warlord",
   Gladiator = "Gladiator",
   Paladin = "Paladin",
-  DarkAvanger = "Dark Avanger"
+  DarkAvanger = "DarkAvanger",
+  ShillienKnight = "ShillienKnight",
+  TempleKnight = "TempleKnight",
 }
 
 export const SKILLS_LIMIT_PER_TIER_PER_SKILLSET = [8, 8, 8, 3, 1, 1];

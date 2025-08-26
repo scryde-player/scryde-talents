@@ -16,11 +16,11 @@
   left: 3px;
   top: 3px;
   z-index: 1;
-  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .skillImageActive {
-  background-position-x: 40px;
+  filter: brightness(2.5) contrast(2.2);
 }
 
 .levelIndicator {
@@ -41,4 +41,13 @@
   color: #ffffff;
   font-size: 8px;
   text-shadow: 1px 1px 1px #010101;
+}
+
+.tooltip {
+  position: absolute; /* или absolute в зависимости от структуры */
+  z-index: 1000;
+  transform: translateY(-100%);
+  pointer-events: none;
+  top: 0;
+  left: 0;
 }

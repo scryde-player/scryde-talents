@@ -6,6 +6,7 @@ export interface TalentSkill {
   image: string;
   maxLevel: number;
   tier: number;
+  index: number;
 }
 
 export interface TalentSkillset {

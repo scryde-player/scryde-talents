@@ -1,4 +1,4 @@
-import { Profession } from "@/lib/constants";
+import { Profession } from "@/lib/races";
 
 export interface TalentSkill {
   id: string;

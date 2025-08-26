@@ -12,7 +12,7 @@ export const TalentsWindow = ({ profession }: TalentsWindowProps) => {
 
   // Получаем скиллы для текущей профессии
   const professionSkills =
-    SKILLSETS[profession as keyof typeof SKILLSETS] || SKILLSETS.Necromancer;
+    SKILLSETS[profession.id as keyof typeof SKILLSETS] || SKILLSETS.Necromancer;
 
   useEffect(() => {
     setSkillsets([SKILLSETS.Berserk, SKILLSETS.Guardian, professionSkills]);
@@ -23,7 +23,7 @@ export const TalentsWindow = ({ profession }: TalentsWindowProps) => {
       {/* Заголовок профессии и счетчик очков */}
       <div className={styles.header}>
         <div className={styles.professionTitle}>
-          <span className={styles.professionText}>{profession}</span>
+          <span className={styles.professionText}>{profession.name}</span>
         </div>
         <div className={styles.pointsCounter}>
           <span className="points-text">{availablePoints}</span>

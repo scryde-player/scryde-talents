@@ -2,7 +2,7 @@
 
 import { TalentsWindow } from "@/components/talents/TalentsWindow/TalentsWindow";
 import { TalentsProvider } from "@/contexts/TalentsContext";
-import { Profession } from "@/lib/constants";
+import { RACES } from "@/lib/races";
 
 export default function Home() {
   return (
@@ -15,7 +15,13 @@ export default function Home() {
       }}
     >
       <TalentsProvider>
-        <TalentsWindow profession={Profession.ThreasureHunter} />
+        <TalentsWindow
+          profession={
+            RACES.flatMap((r) => r.professions).find(
+              (p) => p.id === "dreadnought"
+            )!
+          }
+        />
       </TalentsProvider>
     </main>
   );

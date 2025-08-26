@@ -1,4 +1,5 @@
 import { TalentSkillset } from "@/types/talents";
+import { RACES } from "./races";
 
 function getMaxLevel(index: number) {
   if (index <= 11) return 4;
@@ -26,22 +27,11 @@ const commonSkillset = (name: string): TalentSkillset => ({
     }),
 });
 
-const mockSkillset = (id: string): TalentSkillset => ({
-  id,
-  skills: Array(24)
-    .fill(0)
-    .map((_, index) => ({
-      id: `skill-${id}-${index}`,
-      icon: "/assets/images/icons/skill-1-1.png",
-      image: "/assets/images/talents/skill-default.jpg",
-      tier: Math.floor(index / 4),
-      maxLevel: getMaxLevel(index),
-      index,
-    })),
-});
-
 export const SKILLSETS: { [key: string]: TalentSkillset } = {
   Berserk: commonSkillset("berserk"),
   Guardian: commonSkillset("guardian"),
-  ThreasureHunter: commonSkillset("ThreasureHunter"),
 };
+
+RACES.flatMap((race) => race.professions).forEach((profession) => {
+  SKILLSETS[profession.id] = commonSkillset(profession.id);
+});

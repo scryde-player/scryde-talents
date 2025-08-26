@@ -6,6 +6,23 @@ function getMaxLevel(index: number) {
   return 1;
 }
 
+const commonSkillset = (name: string): TalentSkillset => ({
+  id: name,
+  skills: Array(24)
+    .fill(0)
+    .map((_, index) => {
+      const tier = Math.floor(index / 4);
+      const order = index % 4;
+      return {
+        id: `skill-${name}-${index}`,
+        icon: `/assets/images/icons/common/${name}/${tier + 1}-${order + 1}.png`,
+        image: `/assets/images/icons/common/${name}/1-1.png`,
+        tier: tier,
+        maxLevel: getMaxLevel(index),
+      };
+    }),
+});
+
 const mockSkillset = (id: string): TalentSkillset => ({
   id,
   skills: Array(24)
@@ -18,8 +35,9 @@ const mockSkillset = (id: string): TalentSkillset => ({
       maxLevel: getMaxLevel(index),
     })),
 });
+
 export const SKILLSETS: { [key: string]: TalentSkillset } = {
-  Berserk: mockSkillset("Berserk"),
+  Berserk: commonSkillset("berserk"),
   Guardian: mockSkillset("Guardian"),
   Necromancer: mockSkillset("Necromancer"),
 };

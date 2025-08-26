@@ -24,7 +24,14 @@ export const TalentsSkill = ({
         className={`${styles.skillImage} ${
           currentLevel > 0 ? styles.skillImageActive : ""
         }`}
-        style={{ backgroundImage: `url(${skill.icon})` }}
+        style={{ 
+          backgroundImage: `url(${skill.icon})`,
+          backgroundPosition: '0 0', // Левый верхний угол
+          backgroundSize: 'auto', // Исходный размер изображения
+          width: '40px',
+          height: '40px',
+          backgroundRepeat: 'no-repeat' 
+        }}
       />
       <div className={styles.levelIndicator}>
         <span className={styles.levelText}>

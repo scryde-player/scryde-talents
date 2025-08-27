@@ -3,7 +3,6 @@
 import { TalentsSkillProps } from "@/types/talents";
 import styles from "./TalentsSkill.module.css";
 import { useState, useRef, useEffect } from "react";
-import NextImage from "next/image";
 
 const imageCache = new Map<
   string,
@@ -88,9 +87,7 @@ export const TalentsSkill = ({
       {isHovered && loadedImage && (
         <div ref={tooltipRef} className={styles.tooltip}>
           {/* Вставляем уже загруженное изображение */}
-          <NextImage
-            width={loadedImage.width}
-            height={loadedImage.height}
+          <img
             src={loadedImage.src}
             alt="Skill description"
             className={styles.tooltipImage}

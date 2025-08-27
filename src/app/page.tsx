@@ -1,28 +1,5 @@
-"use client";
-
-import { TalentsWindow } from "@/components/talents/TalentsWindow/TalentsWindow";
-import { TalentsProvider } from "@/contexts/TalentsContext";
-import { RACES } from "@/lib/races";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return (
-    <main
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        minHeight: "100vh",
-      }}
-    >
-      <TalentsProvider>
-        <TalentsWindow
-          profession={
-            RACES.flatMap((r) => r.professions).find(
-              (p) => p.id === "dreadnought"
-            )!
-          }
-        />
-      </TalentsProvider>
-    </main>
-  );
+  return redirect("/talents/human_fighter/dreadnought");
 }

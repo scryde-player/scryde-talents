@@ -7,6 +7,8 @@
   background-image: url("/assets/images/background-skill.png");
   position: relative;
   user-select: none;
+  touch-action: manipulation;
+  cursor: pointer;
 }
 
 .skillImage {

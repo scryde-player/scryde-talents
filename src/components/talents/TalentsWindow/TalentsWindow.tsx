@@ -7,10 +7,15 @@ import { SKILLSETS } from "@/lib/skillsets";
 import { useTalents } from "@/contexts/TalentsContext";
 import styles from "./TalentsWindow.module.css";
 import { ResetButton } from "../ResetButton/ResetButton";
+import { ShareButton } from "../ShareButton/ShareButton";
 import { useEffect } from "react";
+import { useParams } from "next/navigation";
+import { encodeBuild, decodeBuild } from "@/utils/encoding";
 
 export const TalentsWindow = ({ profession }: TalentsWindowProps) => {
-  const { availablePoints, reset, setSkillsets } = useTalents();
+  const { availablePoints, reset, setSkillsets, skills } = useTalents();
+  const params = useParams();
+  const raceId = params.race as string;
 
   // Получаем скиллы для текущей профессии
   const professionSkills =
@@ -19,6 +24,23 @@ export const TalentsWindow = ({ profession }: TalentsWindowProps) => {
   useEffect(() => {
     setSkillsets([SKILLSETS.Berserk, SKILLSETS.Guardian, professionSkills]);
   }, [profession, setSkillsets, professionSkills]);
+
+  const handleShare = async () => {
+    try {
+      // Шифруем текущее состояние
+      const encodedString = encodeBuild(raceId, profession.id, skills);
+
+      // Копируем в буфер обмена
+      await navigator.clipboard.writeText(encodedString);
+
+      // Показываем уведомление
+      alert(`Строчка скопирована в буфер обмена: ${encodedString}`);
+      console.log('descoded:' + JSON.stringify(decodeBuild(encodedString)));
+    } catch (error) {
+      console.error("Ошибка при копировании:", error);
+      alert("Не удалось скопировать строчку");
+    }
+  };
 
   return (
     <div className={styles.window}>
@@ -54,13 +76,22 @@ export const TalentsWindow = ({ profession }: TalentsWindowProps) => {
         />
       </div>
 
-      {/* Кнопка Сброс */}
-      <div className={styles.resetButton}>
-        <ResetButton 
-          onReset={reset} 
-          isAvailable={availablePoints !== MAX_POINTS}
-        />
+      {/* Кнопки Сброс и Поделиться */}
+      <div className={styles.buttonsContainer}>
+        <div className={styles.resetButton}>
+          <ResetButton
+            onReset={reset}
+            isAvailable={availablePoints !== MAX_POINTS}
+          />
+        </div>
+        <div className={styles.shareButton}>
+          <ShareButton
+            onShare={handleShare}
+            isAvailable={true}
+          />
+        </div>
       </div>
     </div>
   );
 };
+

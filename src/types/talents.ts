@@ -34,3 +34,8 @@ export interface ResetButonProps {
   onReset: () => void;
   isAvailable: boolean;
 }
+
+export interface ShareButtonProps {
+  onShare: () => void;
+  isAvailable: boolean;
+}

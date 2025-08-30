@@ -1,0 +1,12 @@
+.button {
+  width: 143px;
+  height: 35px;
+  background-size: cover;
+  position: relative;
+  background-image: url("/assets/images/background-share-button.png");
+  cursor: pointer;
+}
+
+.buttonActive {
+  filter: brightness(1.5) contrast(1.2);
+}

@@ -3,7 +3,7 @@
   height: 35px;
   background-size: cover;
   position: relative;
-  background-image: url("/assets/images/background-share-button.png");
+  background-image: url("/assets/images/background-empty-button.png");
   cursor: pointer;
 }
 

@@ -53,3 +53,9 @@
   left: 12px;
   top: 648px;
 }
+
+.shareButton {
+  position: absolute;
+  left: 159px;
+  top: 648px;
+}

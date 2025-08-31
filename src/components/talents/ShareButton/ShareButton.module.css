@@ -10,3 +10,20 @@
 .buttonActive {
   filter: brightness(1.5) contrast(1.2);
 }
+
+.buttonText{
+  font-size: 12px;
+}
+
+.buttonTextHolder{
+    position: absolute;
+    z-index: 2;
+    top: 9px;
+    left: 57px;
+    width: 32px;
+    height: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}

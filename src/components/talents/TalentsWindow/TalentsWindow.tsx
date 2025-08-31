@@ -34,8 +34,8 @@ export const TalentsWindow = ({ profession }: TalentsWindowProps) => {
       await navigator.clipboard.writeText(encodedString);
 
       // Показываем уведомление
-      alert(`Строчка скопирована в буфер обмена: ${encodedString}`);
-      console.log('descoded:' + JSON.stringify(decodeBuild(encodedString)));
+      console.log('encoded: ' + JSON.stringify(encodedString));
+      console.log('decoded:' + JSON.stringify(decodeBuild(encodedString)));
     } catch (error) {
       console.error("Ошибка при копировании:", error);
       alert("Не удалось скопировать строчку");

@@ -5,8 +5,16 @@ import styles from "./ShareButton.module.css";
 
 export const ShareButton = ({ onShare, isAvailable }: ShareButtonProps) => {
   return (
-    <button className={`${styles.button} ${
-      isAvailable ? styles.buttonActive : ""
-    }`} onClick={onShare} aria-label="Поделиться" />
+    <div onClick={onShare} >
+        <button className={`${styles.button} ${
+            isAvailable ? styles.buttonActive : ""
+            }`} aria-label="Поделиться" 
+        />
+        <div className={styles.buttonTextHolder}>
+            <span className={styles.buttonText}>
+                Поделиться
+            </span>
+        </div>
+    </div>
   );
 };

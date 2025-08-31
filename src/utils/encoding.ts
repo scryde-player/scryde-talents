@@ -6,8 +6,6 @@ export const encodeBuild = (
   professionId: string, 
   skills: Record<string, number>
 ): string => {
-console.log(JSON.stringify(skills));
-
   const raceIndex = RACES.findIndex(race => race.id === raceId);
   const race = RACES[raceIndex];
 
@@ -77,5 +75,15 @@ export const decodeBuild = (encodedString: string): {
     professionId: profession?.id || '',
     skills
   };
+};
+
+export const createBuildLink = (
+  raceId: string,
+  professionId: string,
+  skills: Record<string, number>,
+  baseUrl: string = typeof window !== 'undefined' ? window.location.origin : ''
+): string => {
+  const encoded = encodeBuild(raceId, professionId, skills);
+  return `${baseUrl}/talents/${raceId}/${professionId}#build=${encodeURIComponent(encoded)}`;
 };
 

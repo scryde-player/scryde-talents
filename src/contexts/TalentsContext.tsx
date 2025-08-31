@@ -12,6 +12,7 @@ import React, {
   useState,
   ReactNode,
   useMemo,
+  useEffect,
 } from "react";
 
 interface TalentsContextType {
@@ -45,7 +46,20 @@ export const TalentsProvider: React.FC<TalentsProviderProps> = ({
   const [skills, setSkills] = useState<Record<string, number>>(initialSkills);
   const [panels, setPanels] = useState<Record<string, number>>(initialPanels);
   const [skillsets, setSkillsets] = useState<TalentSkillset[]>([]);
-  const [availablePoints, setAvailablePoints] = useState(MAX_POINTS);
+
+  useEffect(() => {
+    setSkills(initialSkills);
+    // Пересчитываем использованные очки
+    const initialUsedPoints = Object.values(initialSkills).reduce((sum, level) => sum + level, 0);
+    setAvailablePoints(MAX_POINTS - initialUsedPoints);
+  }, [initialSkills]); // Добавлена закрывающая скобка
+
+  const initialUsedPoints = useMemo(() => 
+    Object.values(initialSkills).reduce((sum, level) => sum + level, 0), 
+    [initialSkills]
+  );
+  
+  const [availablePoints, setAvailablePoints] = useState(MAX_POINTS - initialUsedPoints);
   const [totalPoints] = useState(MAX_POINTS);
 
   const skillsMap = useMemo(() => {

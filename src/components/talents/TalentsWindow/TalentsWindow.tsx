@@ -10,7 +10,7 @@ import { ResetButton } from "../ResetButton/ResetButton";
 import { ShareButton } from "../ShareButton/ShareButton";
 import { useEffect } from "react";
 import { useParams } from "next/navigation";
-import { encodeBuild, decodeBuild } from "@/utils/encoding";
+import { encodeBuild, decodeBuild, createBuildLink  } from "@/utils/encoding";
 
 export const TalentsWindow = ({ profession }: TalentsWindowProps) => {
   const { availablePoints, reset, setSkillsets, skills } = useTalents();
@@ -29,11 +29,11 @@ export const TalentsWindow = ({ profession }: TalentsWindowProps) => {
     try {
       // Шифруем текущее состояние
       const encodedString = encodeBuild(raceId, profession.id, skills);
+      const buildLink = createBuildLink(raceId, profession.id, skills);
 
       // Копируем в буфер обмена
-      await navigator.clipboard.writeText(encodedString);
+      await navigator.clipboard.writeText(buildLink);
 
-      // Показываем уведомление
       console.log('encoded: ' + JSON.stringify(encodedString));
       console.log('decoded:' + JSON.stringify(decodeBuild(encodedString)));
     } catch (error) {

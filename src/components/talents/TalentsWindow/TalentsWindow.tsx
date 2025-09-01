@@ -32,7 +32,19 @@ export const TalentsWindow = ({ profession }: TalentsWindowProps) => {
       const buildLink = createBuildLink(raceId, profession.id, skills);
 
       // Копируем в буфер обмена
-      await navigator.clipboard.writeText(buildLink);
+      // Проверяем доступность Clipboard API
+      if (true) {
+        // Fallback для старых браузеров или HTTP
+        const textArea = document.createElement('textarea');
+        textArea.value = buildLink;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+      } else {
+        // Используем современный API
+        await navigator.clipboard.writeText(buildLink);
+      }
 
       console.log('encoded: ' + JSON.stringify(encodedString));
       console.log('decoded:' + JSON.stringify(decodeBuild(encodedString)));

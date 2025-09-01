@@ -33,7 +33,7 @@ export const TalentsWindow = ({ profession }: TalentsWindowProps) => {
 
       // Копируем в буфер обмена
       // Проверяем доступность Clipboard API
-      if (true) {
+      if (!navigator.clipboard || !navigator.clipboard.writeText) {
         // Fallback для старых браузеров или HTTP
         const textArea = document.createElement('textarea');
         textArea.value = buildLink;

@@ -78,6 +78,7 @@ export type ProfessionName =
 export interface Profession {
   id: ProfessionId;
   name: ProfessionName;
+  code: number
 }
 
 // Типы для рас
@@ -118,103 +119,103 @@ export const RACES: Race[] = [
     id: "human_fighter",
     name: "Human Fighter",
     professions: [
-      { id: "dreadnought", name: "Dreadnought" },
-      { id: "duelist", name: "Duelist" },
-      { id: "phoenix_knight", name: "Phoenix Knight" },
-      { id: "hell_knight", name: "Hell Knight" },
-      { id: "adventurer", name: "Adventurer" },
-      { id: "sagittarius", name: "Sagittarius" },
+      { id: "dreadnought", name: "Dreadnought", code: 89 },
+      { id: "duelist", name: "Duelist", code: 88 },
+      { id: "phoenix_knight", name: "Phoenix Knight", code: 90 },
+      { id: "hell_knight", name: "Hell Knight", code: 91 },
+      { id: "adventurer", name: "Adventurer", code: 93 },
+      { id: "sagittarius", name: "Sagittarius", code: 92 },
     ],
   },
   {
     id: "human_mystic",
     name: "Human Mystic",
     professions: [
-      { id: "archmage", name: "Archmage" },
-      { id: "soultaker", name: "Soultaker" },
-      { id: "arcana_lord", name: "Arcana Lord" },
-      { id: "cardinal", name: "Cardinal" },
-      { id: "hierophant", name: "Hierophant" },
+      { id: "archmage", name: "Archmage", code: 94 },
+      { id: "soultaker", name: "Soultaker", code: 95 },
+      { id: "arcana_lord", name: "Arcana Lord", code: 96 },
+      { id: "cardinal", name: "Cardinal", code: 97 },
+      { id: "hierophant", name: "Hierophant", code: 98 },
     ],
   },
   {
     id: "elven_fighter",
     name: "Elven Fighter",
     professions: [
-      { id: "eva_templar", name: "Eva's Templar" },
-      { id: "sword_muse", name: "Sword Muse" },
-      { id: "wind_rider", name: "Wind Rider" },
-      { id: "moonlight_sentinel", name: "Moonlight Sentinel" },
+      { id: "eva_templar", name: "Eva's Templar", code: 99 },
+      { id: "sword_muse", name: "Sword Muse", code: 100 },
+      { id: "wind_rider", name: "Wind Rider", code: 101 },
+      { id: "moonlight_sentinel", name: "Moonlight Sentinel", code: 102 },
     ],
   },
   {
     id: "elven_mystic",
     name: "Elven Mystic",
     professions: [
-      { id: "mystic_muse", name: "Mystic Muse" },
-      { id: "elemental_master", name: "Elemental Master" },
-      { id: "eva_saint", name: "Eva's Saint" },
+      { id: "mystic_muse", name: "Mystic Muse", code: 103 },
+      { id: "elemental_master", name: "Elemental Master", code: 104 },
+      { id: "eva_saint", name: "Eva's Saint", code: 105 },
     ],
   },
   {
     id: "dark_fighter",
     name: "Dark Fighter",
     professions: [
-      { id: "shillien_templar", name: "Shillien Templar" },
-      { id: "spectral_dancer", name: "Spectral Dancer" },
-      { id: "ghost_hunter", name: "Ghost Hunter" },
-      { id: "ghost_sentinel", name: "Ghost Sentinel" },
+      { id: "shillien_templar", name: "Shillien Templar", code: 106 },
+      { id: "spectral_dancer", name: "Spectral Dancer", code: 107 },
+      { id: "ghost_hunter", name: "Ghost Hunter", code: 108 },
+      { id: "ghost_sentinel", name: "Ghost Sentinel", code: 109 },
     ],
   },
   {
     id: "dark_mystic",
     name: "Dark Mystic",
     professions: [
-      { id: "storm_screamer", name: "Storm Screamer" },
-      { id: "spectral_master", name: "Spectral Master" },
-      { id: "shillien_saint", name: "Shillien Saint" },
+      { id: "storm_screamer", name: "Storm Screamer", code: 110 },
+      { id: "spectral_master", name: "Spectral Master", code: 111 },
+      { id: "shillien_saint", name: "Shillien Saint", code: 112 },
     ],
   },
   {
     id: "orc_fighter",
     name: "Orc Fighter",
     professions: [
-      { id: "titan", name: "Titan" },
-      { id: "grand_khavatari", name: "Grand Khavatari" },
+      { id: "titan", name: "Titan", code: 113 },
+      { id: "grand_khavatari", name: "Grand Khavatari", code: 114 },
     ],
   },
   {
     id: "orc_mystic",
     name: "Orc Mystic",
     professions: [
-      { id: "dominator", name: "Dominator" },
-      { id: "doomcryer", name: "Doomcryer" },
+      { id: "dominator", name: "Dominator", code: 115 },
+      { id: "doomcryer", name: "Doomcryer", code: 116 },
     ],
   },
   {
     id: "dwarven_fighter",
     name: "Dwarven Fighter",
     professions: [
-      { id: "fortune_seeker", name: "Fortune Seeker" },
-      { id: "maestro", name: "Maestro" },
+      { id: "fortune_seeker", name: "Fortune Seeker", code: 117 },
+      { id: "maestro", name: "Maestro", code: 118 },
     ],
   },
   {
     id: "kamael_male",
     name: "Kamael Male",
     professions: [
-      { id: "doombringer", name: "Doombringer" },
-      { id: "soul_hound", name: "Soul Hound" },
-      { id: "judicator", name: "Judicator" },
+      { id: "doombringer", name: "Doombringer", code: 131 },
+      { id: "soul_hound", name: "Soul Hound", code: 132 },
+      { id: "judicator", name: "Judicator", code: 136 },
     ],
   },
   {
     id: "kamael_female",
     name: "Kamael Female",
     professions: [
-      { id: "female_soul_hound", name: "Female Soul Hound" },
-      { id: "trickster", name: "Trickster" },
-      { id: "judicator", name: "Judicator" },
+      { id: "female_soul_hound", name: "Female Soul Hound", code: 133 },
+      { id: "trickster", name: "Trickster", code: 134 },
+      { id: "judicator", name: "Judicator", code: 136 },
     ],
   },
 ] as const;

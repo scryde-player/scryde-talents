@@ -4,6 +4,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Scryde Talents",
   description: "by fans",
+  icons: {
+    icon: "/assets/images/fav.png",
+  },
 };
 
 export default function RootLayout({

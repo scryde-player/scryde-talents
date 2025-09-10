@@ -1,8 +1,6 @@
 import { TalentsWindowProps } from "@/types/talents";
 import { TalentsPanel } from "../TalentsPanel";
-import { 
-  PanelVariant, 
-  MAX_POINTS } from "@/lib/constants";
+import { PanelVariant, MAX_POINTS } from "@/lib/constants";
 import { SKILLSETS } from "@/lib/skillsets";
 import { useTalents } from "@/contexts/TalentsContext";
 import styles from "./TalentsWindow.module.css";
@@ -10,7 +8,7 @@ import { ResetButton } from "../ResetButton/ResetButton";
 import { ShareButton } from "../ShareButton/ShareButton";
 import { useEffect } from "react";
 import { useParams } from "next/navigation";
-import { encodeBuild, decodeBuild, createBuildLink  } from "@/utils/encoding";
+import { encodeBuild, decodeBuild, createBuildLink } from "@/utils/encoding";
 
 export const TalentsWindow = ({ profession }: TalentsWindowProps) => {
   const { availablePoints, reset, setSkillsets, skills } = useTalents();
@@ -35,19 +33,19 @@ export const TalentsWindow = ({ profession }: TalentsWindowProps) => {
       // Проверяем доступность Clipboard API
       if (!navigator.clipboard || !navigator.clipboard.writeText) {
         // Fallback для старых браузеров или HTTP
-        const textArea = document.createElement('textarea');
+        const textArea = document.createElement("textarea");
         textArea.value = buildLink;
         document.body.appendChild(textArea);
         textArea.select();
-        document.execCommand('copy');
+        document.execCommand("copy");
         document.body.removeChild(textArea);
       } else {
         // Используем современный API
         await navigator.clipboard.writeText(buildLink);
       }
 
-      console.log('encoded: ' + JSON.stringify(encodedString));
-      console.log('decoded:' + JSON.stringify(decodeBuild(encodedString)));
+      console.log("encoded: " + JSON.stringify(encodedString));
+      console.log("decoded:" + JSON.stringify(decodeBuild(encodedString)));
     } catch (error) {
       console.error("Ошибка при копировании:", error);
       alert("Не удалось скопировать строчку");
@@ -97,13 +95,9 @@ export const TalentsWindow = ({ profession }: TalentsWindowProps) => {
           />
         </div>
         <div className={styles.shareButton}>
-          <ShareButton
-            onShare={handleShare}
-            isAvailable={true}
-          />
+          <ShareButton onShare={handleShare} isAvailable={true} />
         </div>
       </div>
     </div>
   );
 };
-

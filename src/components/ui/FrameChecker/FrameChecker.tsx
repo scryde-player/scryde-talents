@@ -1,10 +1,14 @@
 // components/FrameChecker.tsx
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import CryingOrc from '../CryingOrc/CryingOrc';
+import { useEffect, useState } from "react";
+import CryingOrc from "../CryingOrc/CryingOrc";
 
-export default function FrameChecker({ children }: { children: React.ReactNode }) {
+export default function FrameChecker({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [isFrame, setIsFrame] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -13,7 +17,7 @@ export default function FrameChecker({ children }: { children: React.ReactNode }
     const checkFrame = () => {
       const inIframe = window.self !== window.top;
       const urlParams = new URLSearchParams(window.location.search);
-      const hasFrameParam = urlParams.get('frame') === '1';
+      const hasFrameParam = urlParams.get("frame") === "1";
       setIsFrame(inIframe || hasFrameParam);
     };
 

@@ -3,7 +3,7 @@
 import {
   SKILLS_CONDITION_PER_TIER_PER_SKILLSET,
   SKILLS_LIMIT_PER_TIER_PER_SKILLSET,
-  MAX_POINTS
+  MAX_POINTS,
 } from "@/lib/constants";
 import { TalentSkill, TalentSkillset } from "@/types/talents";
 import React, {
@@ -22,7 +22,7 @@ interface TalentsContextType {
   incrementSkill: (
     skillId: string,
     panelId: string,
-    maxLevel: number
+    maxLevel: number,
   ) => boolean;
   decrementSkill: (skillId: string, panelId: string) => boolean;
   totalPoints: number;
@@ -50,16 +50,21 @@ export const TalentsProvider: React.FC<TalentsProviderProps> = ({
   useEffect(() => {
     setSkills(initialSkills);
     // Пересчитываем использованные очки
-    const initialUsedPoints = Object.values(initialSkills).reduce((sum, level) => sum + level, 0);
+    const initialUsedPoints = Object.values(initialSkills).reduce(
+      (sum, level) => sum + level,
+      0,
+    );
     setAvailablePoints(MAX_POINTS - initialUsedPoints);
   }, [initialSkills]); // Добавлена закрывающая скобка
 
-  const initialUsedPoints = useMemo(() => 
-    Object.values(initialSkills).reduce((sum, level) => sum + level, 0), 
-    [initialSkills]
+  const initialUsedPoints = useMemo(
+    () => Object.values(initialSkills).reduce((sum, level) => sum + level, 0),
+    [initialSkills],
   );
-  
-  const [availablePoints, setAvailablePoints] = useState(MAX_POINTS - initialUsedPoints);
+
+  const [availablePoints, setAvailablePoints] = useState(
+    MAX_POINTS - initialUsedPoints,
+  );
   const [totalPoints] = useState(MAX_POINTS);
 
   const skillsMap = useMemo(() => {
@@ -96,7 +101,7 @@ export const TalentsProvider: React.FC<TalentsProviderProps> = ({
   const incrementSkill = (
     skillId: string,
     panelId: string,
-    maxLevel: number
+    maxLevel: number,
   ): boolean => {
     const currentLevel = skills[skillId] || 0;
 
@@ -119,7 +124,7 @@ export const TalentsProvider: React.FC<TalentsProviderProps> = ({
     // Найти количество скиллов более низкого уровня в той же ветке
     const prevTiersCount = countSkillsInPreviousTiers(
       skill.skillsetId,
-      skill.tier
+      skill.tier,
     );
     if (prevTiersCount < SKILLS_CONDITION_PER_TIER_PER_SKILLSET[skill.tier]) {
       return false;

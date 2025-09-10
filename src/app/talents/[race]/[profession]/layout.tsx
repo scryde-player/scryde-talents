@@ -20,12 +20,12 @@ export default function TalentsLayout({
   // Находим активные расу и профессию из URL
   const activeRace = RACES.find((r) => r.id === raceId);
   const activeProfession = activeRace?.professions.find(
-    (p) => p.id === professionId
+    (p) => p.id === professionId,
   );
 
   // Локальное состояние для выбранной расы (только для UI)
   const [selectedRace, setSelectedRace] = useState<Race | undefined>(
-    activeRace
+    activeRace,
   );
   const [selectedProfession, setSelectedProfession] = useState<
     Profession | undefined

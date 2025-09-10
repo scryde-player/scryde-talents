@@ -78,7 +78,7 @@ export type ProfessionName =
 export interface Profession {
   id: ProfessionId;
   name: ProfessionName;
-  code: number
+  code: number;
 }
 
 // Типы для рас

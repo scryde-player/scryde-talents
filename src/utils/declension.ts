@@ -1,6 +1,6 @@
 export const declension = (
   number: number,
-  words: [string, string, string]
+  words: [string, string, string],
 ): string => {
   const cases = [2, 0, 1, 1, 1, 2];
   return words[

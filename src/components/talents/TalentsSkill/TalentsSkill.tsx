@@ -86,7 +86,7 @@ export const TalentsSkill = ({
 
       {isHovered && loadedImage && (
         <div ref={tooltipRef} className={styles.tooltip}>
-          {/* Вставляем уже загруженное изображение */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={loadedImage.src}
             alt="Skill description"

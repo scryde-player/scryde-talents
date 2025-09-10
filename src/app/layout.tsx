@@ -3,6 +3,7 @@ import "./globals.css";
 import FrameChecker from "@/components/ui/FrameChecker/FrameChecker";
 import Script from "next/script";
 import YMHit from "@/components/ui/YMHit/YMHit";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Scryde Talents",
@@ -56,7 +57,9 @@ export default function RootLayout({
           <main className="flex flex-col justify-center items-center min-h-screen">
             {children}
           </main>
-          <YMHit />
+          <Suspense>
+            <YMHit />
+          </Suspense>
         </FrameChecker>
         <div className="fixed bottom-2 right-2 text-xs text-gray-400 opacity-50">
           created by angry & nomad

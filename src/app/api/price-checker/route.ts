@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
     console.error(err);
     return NextResponse.json(
       { ok: false, error: err ?? "bad request" },
-      { status: 400 }
+      { status: 400 },
     );
   }
 }

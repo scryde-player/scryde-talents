@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
     try {
       await client.query("BEGIN");
       const sql = `
-        INSERT INTO sell_data (title, price, items_count, found_index, deal_type)
+        INSERT INTO price_data (title, price, items_count, found_index, deal_type)
         VALUES ($1, $2::NUMERIC, $3, $4, $5)
       `;
       for (const it of items) {

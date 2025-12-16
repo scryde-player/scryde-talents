@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "process-skills": "tsx scripts/process-skills-data.ts"
   },
   "dependencies": {
     "next": "15.5.0",
@@ -27,6 +28,7 @@
     "eslint-plugin-prettier": "^5.5.4",
     "prettier": "^3.6.2",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5",
     "typescript-plugin-css-modules": "^5.2.0"
   }

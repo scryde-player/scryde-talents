@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+    <class id="101">
+        <ability id="49" max_level="4" name="Rear Assault" descriptions_address="abilities.description.skill.93324">
+            <set name="icon" val="ScrydeIcon.TalentIcon_93324"/>
+            <set name="required_category_points" val="0"/>
+            <levels>
+                <level value="1">
+                    <skill id="93324" level="1"/>
+                </level>
+                <level value="2">
+                    <skill id="93324" level="2"/>
+                </level>
+                <level value="3">
+                    <skill id="93324" level="3"/>
+                </level>
+                <level value="4">
+                    <skill id="93324" level="4"/>
+                </level>
+            </levels>
+        </ability>
+        <ability id="50" max_level="4" name="Mortal Blow" descriptions_address="abilities.description.skill.93321">
+            <set name="icon" val="ScrydeIcon.TalentIcon_93321"/>
+            <set name="required_category_points" val="0"/>
+            <levels>
+                <level value="1">
+                    <skill id="93321" level="1"/>
+                </level>
+                <level value="2">
+                    <skill id="93321" level="2"/>
+                </level>
+                <level value="3">
+                    <skill id="93321" level="3"/>
+                </level>
+                <level value="4">
+                    <skill id="93321" level="4"/>
+                </level>
+            </levels>
+        </ability>
+        <ability id="51" max_level="4" name="Agility" descriptions_address="abilities.description.skill.93322">
+            <set name="icon" val="ScrydeIcon.TalentIcon_93322"/>
+            <set name="required_category_points" val="0"/>
+            <levels>
+                <level value="1">
+                    <skill id="93322" level="1"/>
+                </level>
+                <level value="2">
+                    <skill id="93322" level="2"/>
+                </level>
+                <level value="3">
+                    <skill id="93322" level="3"/>
+                </level>
+                <level value="4">
+                    <skill id="93322" level="4"/>
+                </level>
+            </levels>
+        </ability>
+        <ability id="52" max_level="4" name="Mortal Damage" descriptions_address="abilities.description.skill.93323">
+            <set name="icon" val="ScrydeIcon.TalentIcon_93323"/>
+            <set name="required_category_points" val="0"/>
+            <levels>
+                <level value="1">
+                    <skill id="93323" level="1"/>
+                </level>
+                <level value="2">
+                    <skill id="93323" level="2"/>
+                </level>
+                <level value="3">
+                    <skill id="93323" level="3"/>
+                </level>
+                <level value="4">
+                    <skill id="93323" level="4"/>
+                </level>
+            </levels>
+        </ability>
+        <ability id="53" max_level="4" name="Wind Walk" descriptions_address="abilities.description.skill.93325">
+            <set name="icon" val="ScrydeIcon.TalentIcon_93297"/>
+            <set name="required_category_points" val="8"/>
+            <levels>
+                <level value="1">
+                    <skill id="93325" level="1"/>
+                </level>
+                <level value="2">
+                    <skill id="93325" level="2"/>
+                </level>
+                <level value="3">
+                    <skill id="93325" level="3"/>
+                </level>
+                <level value="4">
+                    <skill id="93325" level="4"/>
+                </level>
+            </levels>
+        </ability>
+        <ability id="54" max_level="4" name="Walker Prayer" descriptions_address="abilities.description.skill.93458">
+            <set name="icon" val="ScrydeIcon.TalentIcon_93309"/>
+            <set name="required_category_points" val="8"/>
+            <levels>
+                <level value="1">
+                    <skill id="93458" level="1"/>
+                </level>
+                <level value="2">
+                    <skill id="93458" level="2"/>
+                </level>
+                <level value="3">
+                    <skill id="93458" level="3"/>
+                </level>
+                <level value="4">
+                    <skill id="93458" level="4"/>
+                </level>
+            </levels>
+        </ability>
+        <ability id="55" max_level="4" name="Light Armor Protection" descriptions_address="abilities.description.skill.93327">
+            <set name="icon" val="ScrydeIcon.TalentIcon_93318"/>
+            <set name="required_category_points" val="8"/>
+            <levels>
+                <level value="1">
+                    <skill id="93327" level="1"/>
+                </level>
+                <level value="2">
+                    <skill id="93327" level="2"/>
+                </level>
+                <level value="3">
+                    <skill id="93327" level="3"/>
+                </level>
+                <level value="4">
+                    <skill id="93327" level="4"/>
+                </level>
+            </levels>
+        </ability>
+        <ability id="56" max_level="4" name="Light Armor Evasion" descriptions_address="abilities.description.skill.93326">
+            <set name="icon" val="ScrydeIcon.TalentIcon_93315"/>
+            <set name="required_category_points" val="8"/>
+            <levels>
+                <level value="1">
+                    <skill id="93326" level="1"/>
+                </level>
+                <level value="2">
+                    <skill id="93326" level="2"/>
+                </level>
+                <level value="3">
+                    <skill id="93326" level="3"/>
+                </level>
+                <level value="4">
+                    <skill id="93326" level="4"/>
+                </level>
+            </levels>
+        </ability>
+        <ability id="57" max_level="4" name="Purge Immunity" descriptions_address="abilities.description.skill.93330">
+            <set name="icon" val="ScrydeIcon.TalentIcon_93330"/>
+            <set name="required_category_points" val="16"/>
+            <levels>
+                <level value="1">
+                    <skill id="93330" level="1"/>
+                </level>
+                <level value="2">
+                    <skill id="93330" level="2"/>
+                </level>
+                <level value="3">
+                    <skill id="93330" level="3"/>
+                </level>
+                <level value="4">
+                    <skill id="93330" level="4"/>
+                </level>
+            </levels>
+        </ability>
+        <ability id="58" max_level="4" name="Walker Deflect" descriptions_address="abilities.description.skill.93459">
+            <set name="icon" val="ScrydeIcon.TalentIcon_93371"/>
+            <set name="required_category_points" val="16"/>
+            <levels>
+                <level value="1">
+                    <skill id="93459" level="1"/>
+                </level>
+                <level value="2">
+                    <skill id="93459" level="2"/>
+                </level>
+                <level value="3">
+                    <skill id="93459" level="3"/>
+                </level>
+                <level value="4">
+                    <skill id="93459" level="4"/>
+                </level>
+            </levels>
+        </ability>
+        <ability id="59" max_level="4" name="Dodge" descriptions_address="abilities.description.skill.93328">
+            <set name="icon" val="ScrydeIcon.TalentIcon_93328"/>
+            <set name="required_category_points" val="16"/>
+            <levels>
+                <level value="1">
+                    <skill id="93328" level="1"/>
+                </level>
+                <level value="2">
+                    <skill id="93328" level="2"/>
+                </level>
+                <level value="3">
+                    <skill id="93328" level="3"/>
+                </level>
+                <level value="4">
+                    <skill id="93328" level="4"/>
+                </level>
+            </levels>
+        </ability>
+        <ability id="60" max_level="4" name="Arcane Dodge" descriptions_address="abilities.description.skill.93329">
+            <set name="icon" val="ScrydeIcon.TalentIcon_93291"/>
+            <set name="required_category_points" val="16"/>
+            <levels>
+                <level value="1">
+                    <skill id="93329" level="1"/>
+                </level>
+                <level value="2">
+                    <skill id="93329" level="2"/>
+                </level>
+                <level value="3">
+                    <skill id="93329" level="3"/>
+                </level>
+                <level value="4">
+                    <skill id="93329" level="4"/>
+                </level>
+            </levels>
+        </ability>
+        <ability id="61" max_level="3" name="Sprint" descriptions_address="abilities.description.skill.93461">
+            <set name="icon" val="ScrydeIcon.TalentIcon_93345"/>
+            <set name="required_category_points" val="24"/>
+            <levels>
+                <level value="1">
+                    <skill id="93461" level="1"/>
+                </level>
+                <level value="2">
+                    <skill id="93461" level="2"/>
+                </level>
+                <level value="3">
+                    <skill id="93461" level="3"/>
+                </level>
+            </levels>
+        </ability>
+        <ability id="62" max_level="3" name="Vampiric Touch" descriptions_address="abilities.description.skill.93331">
+            <set name="icon" val="ScrydeIcon.TalentIcon_93331"/>
+            <set name="required_category_points" val="24"/>
+            <levels>
+                <level value="1">
+                    <skill id="93331" level="1"/>
+                </level>
+                <level value="2">
+                    <skill id="93331" level="2"/>
+                </level>
+                <level value="3">
+                    <skill id="93331" level="3"/>
+                </level>
+            </levels>
+        </ability>
+        <ability id="63" max_level="3" name="Refresh" descriptions_address="abilities.description.skill.93276">
+            <set name="icon" val="ScrydeIcon.TalentIcon_93276"/>
+            <set name="required_category_points" val="24"/>
+            <levels>
+                <level value="1">
+                    <skill id="93276" level="1"/>
+                </level>
+                <level value="2">
+                    <skill id="93276" level="2"/>
+                </level>
+                <level value="3">
+                    <skill id="93276" level="3"/>
+                </level>
+            </levels>
+        </ability>
+        <ability id="64" max_level="3" name="Backguard" descriptions_address="abilities.description.skill.93298">
+            <set name="icon" val="ScrydeIcon.TalentIcon_93298"/>
+            <set name="required_category_points" val="24"/>
+            <levels>
+                <level value="1">
+                    <skill id="93298" level="1"/>
+                </level>
+                <level value="2">
+                    <skill id="93298" level="2"/>
+                </level>
+                <level value="3">
+                    <skill id="93298" level="3"/>
+                </level>
+            </levels>
+        </ability>
+        <ability id="65" max_level="1" name="Facebreaker" descriptions_address="abilities.description.skill.93378">
+            <set name="icon" val="ScrydeIcon.TalentIcon_93378"/>
+            <set name="required_category_points" val="27"/>
+            <levels>
+                <level value="1">
+                    <skill id="93378" level="1"/>
+                </level>
+            </levels>
+        </ability>
+        <ability id="66" max_level="1" name="Backbreaker" descriptions_address="abilities.description.skill.93379">
+            <set name="icon" val="ScrydeIcon.TalentIcon_93379"/>
+            <set name="required_category_points" val="27"/>
+            <levels>
+                <level value="1">
+                    <skill id="93379" level="1"/>
+                </level>
+            </levels>
+        </ability>
+        <ability id="67" max_level="1" name="Honed Slaughter" descriptions_address="abilities.description.skill.93380">
+            <set name="icon" val="ScrydeIcon.TalentIcon_93380"/>
+            <set name="required_category_points" val="27"/>
+            <levels>
+                <level value="1">
+                    <skill id="93380" level="1"/>
+                </level>
+            </levels>
+        </ability>
+        <ability id="68" max_level="1" name="STR Boost" descriptions_address="abilities.description.skill.93446">
+            <set name="icon" val="ScrydeIcon.TalentIcon_93446"/>
+            <set name="required_category_points" val="27"/>
+            <levels>
+                <level value="1">
+                    <skill id="93446" level="1"/>
+                </level>
+            </levels>
+        </ability>
+        <ability id="69" max_level="1" name="Final Gambit" descriptions_address="abilities.description.skill.93518">
+            <set name="icon" val="ScrydeIcon.TalentIcon_93518"/>
+            <set name="required_category_points" val="28"/>
+            <levels>
+                <level value="1">
+                    <skill id="93518" level="1"/>
+                </level>
+            </levels>
+        </ability>
+        <ability id="70" max_level="1" name="Shift" descriptions_address="abilities.description.skill.92723">
+            <set name="icon" val="ScrydeIcon.TalentIcon_93466"/>
+            <set name="required_category_points" val="28"/>
+            <levels>
+                <level value="1">
+                    <skill id="92723" level="1"/>
+                </level>
+            </levels>
+        </ability>
+        <ability id="71" max_level="1" name="Reapers Gambit" descriptions_address="abilities.description.skill.93464">
+            <set name="icon" val="ScrydeIcon.TalentIcon_93464"/>
+            <set name="required_category_points" val="28"/>
+            <levels>
+                <level value="1">
+                    <skill id="93464" level="1"/>
+                </level>
+            </levels>
+        </ability>
+        <ability id="72" max_level="1" name="Dagger Mastery" descriptions_address="abilities.description.skill.93465">
+            <set name="icon" val="ScrydeIcon.TalentIcon_93369"/>
+            <set name="required_category_points" val="28"/>
+            <levels>
+                <level value="1">
+                    <skill id="93465" level="1"/>
+                </level>
+            </levels>
+        </ability>
+    </class>
+</list>

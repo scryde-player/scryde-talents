@@ -98,6 +98,39 @@ export const TalentsProvider: React.FC<TalentsProviderProps> = ({
       .map((s) => skills[s.id] || 0)
       .reduce((sum, i) => i + sum, 0);
 
+  /**
+   * Проверяет, изучен ли требуемый навык (по abilityId в рамках skillset)
+   */
+  const isRequiredAbilityLearned = (
+    skillsetId: string,
+    requiredAbilityId: number,
+  ): boolean => {
+    const skillset = skillsets.find((set) => set.id === skillsetId);
+    if (!skillset) return false;
+
+    const requiredSkill = skillset.skills.find(
+      (s) => s.abilityId === requiredAbilityId,
+    );
+    if (!requiredSkill) return false;
+
+    return (skills[requiredSkill.id] || 0) > 0;
+  };
+
+  /**
+   * Проверяет, есть ли изученные навыки, зависящие от данного навыка
+   */
+  const hasDependentSkillsLearned = (
+    skillsetId: string,
+    abilityId: number,
+  ): boolean => {
+    const skillset = skillsets.find((set) => set.id === skillsetId);
+    if (!skillset) return false;
+
+    return skillset.skills.some(
+      (s) => s.requiredAbilityId === abilityId && (skills[s.id] || 0) > 0,
+    );
+  };
+
   const incrementSkill = (
     skillId: string,
     panelId: string,
@@ -130,6 +163,14 @@ export const TalentsProvider: React.FC<TalentsProviderProps> = ({
       return false;
     }
 
+    // Проверяем зависимость от другого навыка
+    if (
+      skill.requiredAbilityId &&
+      !isRequiredAbilityLearned(skill.skillsetId, skill.requiredAbilityId)
+    ) {
+      return false;
+    }
+
     setSkills((prev) => ({ ...prev, [skillId]: currentLevel + 1 }));
     setPanels((prev) => ({ ...prev, [panelId]: (prev[panelId] || 0) + 1 }));
     setAvailablePoints((prev) => prev - 1);
@@ -153,6 +194,14 @@ export const TalentsProvider: React.FC<TalentsProviderProps> = ({
     // Найти количество скиллов более высокого уровня в той же ветке
     const nextTiersCount = countSkillsInNextTiers(skill.skillsetId, skill.tier);
     if (nextTiersCount > 0) {
+      return false;
+    }
+
+    // Проверяем, есть ли зависимые навыки (нельзя убрать последний уровень)
+    if (
+      currentLevel === 1 &&
+      hasDependentSkillsLearned(skill.skillsetId, skill.abilityId)
+    ) {
       return false;
     }
 

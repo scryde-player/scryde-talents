@@ -26,6 +26,8 @@ export interface SkillData {
   requiredPoints: number;
   /** ID другой способности, от которой зависит эта */
   requiredAbilityId?: number;
+  /** Название требуемой способности (для отображения) */
+  requiredAbilityName?: string;
   /** Описания бонусов для каждого уровня */
   levelBonuses: string[];
   /** Номер tier (0-5) */

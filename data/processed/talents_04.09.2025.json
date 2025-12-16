@@ -1,6 +1,6 @@
 {
   "version": "04.09.2025",
-  "generatedAt": "2025-12-16T08:07:26.142Z",
+  "generatedAt": "2025-12-16T13:45:14.967Z",
   "common": {
     "berserk": {
       "id": "berserk",
@@ -353,6 +353,7 @@
           "maxLevel": 1,
           "requiredPoints": 28,
           "requiredAbilityId": 18,
+          "requiredAbilityName": "Curse Power",
           "levelBonuses": [
             "Исходящий Урон +5%"
           ],

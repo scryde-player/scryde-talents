@@ -68,13 +68,22 @@ export const SkillTooltip = ({ skill, currentLevel }: SkillTooltipProps) => {
         )}
 
         {/* Требования (если есть) */}
-        {skill.requiredPoints > 0 && (
+        {(skill.requiredPoints > 0 || skill.requiredAbilityName) && (
           <div className={styles.requirements}>
-            <div className={styles.requirement}>
-              <span className={styles.requirementNotMet}>
-                Требуется {skill.requiredPoints} очков в ветке
-              </span>
-            </div>
+            {skill.requiredPoints > 0 && (
+              <div className={styles.requirement}>
+                <span className={styles.requirementNotMet}>
+                  Требуется {skill.requiredPoints} очков в ветке
+                </span>
+              </div>
+            )}
+            {skill.requiredAbilityName && (
+              <div className={styles.requirement}>
+                <span className={styles.requirementNotMet}>
+                  Требуется навык: {skill.requiredAbilityName}
+                </span>
+              </div>
+            )}
           </div>
         )}
       </div>

@@ -22,6 +22,7 @@ interface SkillData {
   maxLevel: number;
   requiredPoints: number;
   requiredAbilityId?: number;
+  requiredAbilityName?: string;
   levelBonuses: string[];
   tier: number;
   index: number;
@@ -53,6 +54,7 @@ interface ParsedAbility {
   iconId: string;
   requiredPoints: number;
   requiredAbilityId?: number;
+  requiredAbilityName?: string;
   descriptionsAddress: string;
 }
 
@@ -181,6 +183,14 @@ function parseAbilitiesXML(xmlContent: string): ParsedAbility[] {
       ? parseInt(requiredAbilityMatch[1], 10)
       : undefined;
 
+    // Извлекаем required_ability_name если есть
+    const requiredAbilityNameMatch = innerContent.match(
+      /<set\s+name="required_ability_name"\s+val="([^"]+)"\/>/,
+    );
+    const requiredAbilityName = requiredAbilityNameMatch
+      ? requiredAbilityNameMatch[1]
+      : undefined;
+
     // Извлекаем skill id из первого уровня
     const skillIdMatch = innerContent.match(/<skill\s+id="(\d+)"/);
     const skillId = skillIdMatch ? parseInt(skillIdMatch[1], 10) : 0;
@@ -193,6 +203,7 @@ function parseAbilitiesXML(xmlContent: string): ParsedAbility[] {
       iconId,
       requiredPoints,
       requiredAbilityId,
+      requiredAbilityName,
       descriptionsAddress,
     });
   }
@@ -290,6 +301,7 @@ function createSkillset(
       maxLevel: ability.maxLevel,
       requiredPoints: ability.requiredPoints,
       requiredAbilityId: ability.requiredAbilityId,
+      requiredAbilityName: ability.requiredAbilityName,
       levelBonuses: bonuses,
       tier,
       index: indexInTier,

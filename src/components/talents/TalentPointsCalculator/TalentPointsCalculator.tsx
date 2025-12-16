@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 import { TalentPointsCalculatorProps, ServerType } from "@/types/talents";
 import { LevelInput } from "@/components/ui/LevelInput";
 import { MAX_POINTS } from "@/lib/constants";
@@ -138,11 +138,34 @@ export const TalentPointsCalculator = ({
     onClose();
   };
 
+  // Этот код закрывает неприятное поведение. 
+  // Если зажать ЛКМ на модалке, а отпустить вне модалки (например, при выделение текста в input-элементе), то модалка закроется.
+
+  // Отслеживаем, был ли mousedown на overlay (не на модалке)
+  const mouseDownOnOverlay = useRef(false);
+
+  const handleOverlayMouseDown = (e: React.MouseEvent) => {
+    // Проверяем, что клик начался именно на overlay, а не на модалке
+    mouseDownOnOverlay.current = e.target === e.currentTarget;
+  };
+
+  const handleOverlayClick = (e: React.MouseEvent) => {
+    // Закрываем только если и mousedown, и click были на overlay
+    if (mouseDownOnOverlay.current && e.target === e.currentTarget) {
+      onClose();
+    }
+    mouseDownOnOverlay.current = false;
+  };
+
   if (!isOpen) return null;
 
   return (
-    <div className={styles.overlay} onClick={onClose}>
-      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+    <div
+      className={styles.overlay}
+      onMouseDown={handleOverlayMouseDown}
+      onClick={handleOverlayClick}
+    >
+      <div className={styles.modal}>
         {/* Кнопка закрытия */}
         <button
           className={styles.closeButton}

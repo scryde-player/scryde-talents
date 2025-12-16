@@ -1,19 +1,32 @@
+import { useState, useEffect } from "react";
 import { TalentsWindowProps } from "@/types/talents";
 import { TalentsPanel } from "../TalentsPanel";
-import { PanelVariant, MAX_POINTS } from "@/lib/constants";
+import { PanelVariant } from "@/lib/constants";
 import { SKILLSETS } from "@/lib/skillsets";
 import { useTalents } from "@/contexts/TalentsContext";
 import styles from "./TalentsWindow.module.css";
 import { ResetButton } from "../ResetButton/ResetButton";
 import { ShareButton } from "../ShareButton/ShareButton";
-import { useEffect } from "react";
+import { PointsControls } from "../PointsControls";
+import { TalentPointsCalculator } from "../TalentPointsCalculator";
 import { useParams } from "next/navigation";
 import { encodeBuild, decodeBuild, createBuildLink } from "@/utils/encoding";
 
 export const TalentsWindow = ({ profession }: TalentsWindowProps) => {
-  const { availablePoints, reset, setSkillsets, skills } = useTalents();
+  const { 
+    availablePoints, 
+    reset, 
+    setSkillsets, 
+    skills,
+    totalPoints,
+    incrementTotalPoints,
+    decrementTotalPoints,
+    setTotalPoints,
+  } = useTalents();
   const params = useParams();
   const raceId = params.race as string;
+  
+  const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
 
   // Получаем скиллы для текущей профессии
   const professionSkills =
@@ -59,10 +72,25 @@ export const TalentsWindow = ({ profession }: TalentsWindowProps) => {
         <div className={styles.professionTitle}>
           <span className={styles.professionText}>{profession.name}</span>
         </div>
-        <div className={styles.pointsCounter}>
-          <span className="points-text">{availablePoints}</span>
+        <div className={styles.pointsSection}>
+          <div className={styles.pointsCounter}>
+            <span className="points-text">{availablePoints}</span>
+          </div>
+          <PointsControls
+            totalPoints={totalPoints}
+            onIncrement={incrementTotalPoints}
+            onDecrement={decrementTotalPoints}
+            onOpenCalculator={() => setIsCalculatorOpen(true)}
+          />
         </div>
       </div>
+      
+      {/* Калькулятор очков талантов */}
+      <TalentPointsCalculator
+        isOpen={isCalculatorOpen}
+        onClose={() => setIsCalculatorOpen(false)}
+        onApply={setTotalPoints}
+      />
 
       {/* Три панели талантов */}
       <div className={`${styles.panelContainer} ${styles.panel1}`}>
@@ -91,7 +119,7 @@ export const TalentsWindow = ({ profession }: TalentsWindowProps) => {
         <div className={styles.resetButton}>
           <ResetButton
             onReset={reset}
-            isAvailable={availablePoints !== MAX_POINTS}
+            isAvailable={availablePoints !== totalPoints}
           />
         </div>
         <div className={styles.shareButton}>

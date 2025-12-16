@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  color: #bbaa88;
+  font-size: 11px;
+  text-shadow: 1px 1px 1px #010101;
+}
+
+.input {
+  width: 70px;
+  height: 28px;
+  padding: 4px 8px;
+  background: linear-gradient(180deg, #1a1810 0%, #2a2820 100%);
+  border: 1px solid #4a4535;
+  border-radius: 3px;
+  color: #ffdd66;
+  font-size: 12px;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.input:focus {
+  border-color: #8a7555;
+}
+
+.input::-webkit-inner-spin-button,
+.input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input[type="number"] {
+  -moz-appearance: textfield;
+}
+

@@ -1,0 +1,66 @@
+.container {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+
+.button {
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #2a2820 0%, #1a1810 100%);
+  border: 1px solid #4a4535;
+  border-radius: 3px;
+  color: #bbaa88;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  line-height: 1;
+}
+
+.button:hover:not(:disabled) {
+  background: linear-gradient(180deg, #3a3830 0%, #2a2820 100%);
+  border-color: #6a5545;
+  color: #ffdd66;
+}
+
+.button:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.incrementButton:hover:not(:disabled) {
+  border-color: #6a8555;
+  color: #aaddaa;
+  box-shadow: 0 0 4px rgba(170, 221, 170, 0.2);
+}
+
+.decrementButton:hover:not(:disabled) {
+  border-color: #8a5545;
+  color: #ddaaaa;
+  box-shadow: 0 0 4px rgba(221, 170, 170, 0.2);
+}
+
+.calculatorButton {
+  width: 20px;
+}
+
+.calculatorButton:hover:not(:disabled) {
+  border-color: #8a7555;
+  box-shadow: 0 0 4px rgba(255, 221, 102, 0.2);
+}
+
+.calculatorButton svg {
+  width: 12px;
+  height: 12px;
+}
+

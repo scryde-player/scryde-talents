@@ -13,6 +13,7 @@ import React, {
   ReactNode,
   useMemo,
   useEffect,
+  useCallback,
 } from "react";
 
 interface TalentsContextType {
@@ -26,6 +27,9 @@ interface TalentsContextType {
   ) => boolean;
   decrementSkill: (skillId: string, panelId: string) => boolean;
   totalPoints: number;
+  setTotalPoints: (points: number) => void;
+  incrementTotalPoints: () => boolean;
+  decrementTotalPoints: () => boolean;
   reset: () => void;
   setSkillsets: (skillsets: TalentSkillset[]) => void;
 }
@@ -65,7 +69,52 @@ export const TalentsProvider: React.FC<TalentsProviderProps> = ({
   const [availablePoints, setAvailablePoints] = useState(
     MAX_POINTS - initialUsedPoints,
   );
-  const [totalPoints] = useState(MAX_POINTS);
+  const [totalPoints, setTotalPointsState] = useState(MAX_POINTS);
+
+  // Функция для установки общего количества очков
+  const setTotalPoints = useCallback((points: number) => {
+    const clampedPoints = Math.min(Math.max(1, points), MAX_POINTS);
+    const usedPoints = Object.values(skills).reduce((sum, level) => sum + level, 0);
+    
+    // Если использовано больше очков, чем новый лимит - сбрасываем скиллы
+    if (usedPoints > clampedPoints) {
+      setSkills({});
+      setPanels({});
+      setAvailablePoints(clampedPoints);
+    } else {
+      setAvailablePoints(clampedPoints - usedPoints);
+    }
+    
+    setTotalPointsState(clampedPoints);
+  }, [skills]);
+
+  // Увеличить общее количество очков на 1
+  const incrementTotalPoints = useCallback((): boolean => {
+    if (totalPoints >= MAX_POINTS) return false;
+    setTotalPointsState(prev => prev + 1);
+    setAvailablePoints(prev => prev + 1);
+    return true;
+  }, [totalPoints]);
+
+  // Уменьшить общее количество очков на 1
+  const decrementTotalPoints = useCallback((): boolean => {
+    if (totalPoints <= 1) return false;
+    
+    const usedPoints = Object.values(skills).reduce((sum, level) => sum + level, 0);
+    const newTotal = totalPoints - 1;
+    
+    // Если использовано больше очков, чем новый лимит - сбрасываем скиллы
+    if (usedPoints > newTotal) {
+      setSkills({});
+      setPanels({});
+      setAvailablePoints(newTotal);
+    } else {
+      setAvailablePoints(newTotal - usedPoints);
+    }
+    
+    setTotalPointsState(newTotal);
+    return true;
+  }, [totalPoints, skills]);
 
   const skillsMap = useMemo(() => {
     const map = new Map<string, TalentSkill & { skillsetId: string }>();
@@ -214,7 +263,7 @@ export const TalentsProvider: React.FC<TalentsProviderProps> = ({
   const reset = () => {
     setSkills({});
     setPanels({});
-    setAvailablePoints(MAX_POINTS);
+    setAvailablePoints(totalPoints);
   };
 
   return (
@@ -225,6 +274,9 @@ export const TalentsProvider: React.FC<TalentsProviderProps> = ({
         incrementSkill,
         decrementSkill,
         totalPoints,
+        setTotalPoints,
+        incrementTotalPoints,
+        decrementTotalPoints,
         panels,
         reset,
         setSkillsets,

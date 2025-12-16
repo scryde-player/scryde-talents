@@ -139,3 +139,38 @@ export interface SkillTooltipProps {
   skill: TalentSkill;
   currentLevel: number;
 }
+
+/**
+ * Props для компонента LevelInput
+ */
+export interface LevelInputProps {
+  label: string;
+  value: number;
+  onChange: (value: number) => void;
+  min?: number;
+  max?: number;
+}
+
+/**
+ * Тип сервера для калькулятора
+ */
+export type ServerType = "low-rate" | "mid-rate";
+
+/**
+ * Props для компонента TalentPointsCalculator
+ */
+export interface TalentPointsCalculatorProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onApply: (points: number) => void;
+}
+
+/**
+ * Props для кнопки управления очками
+ */
+export interface PointsControlButtonProps {
+  onClick: () => void;
+  disabled: boolean;
+  children: React.ReactNode;
+  title?: string;
+}

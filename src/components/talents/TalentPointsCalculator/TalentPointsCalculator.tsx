@@ -61,6 +61,21 @@ export const TalentPointsCalculator = ({
   const [sub2Level, setSub2Level] = useState(85);
   const [sub3Level, setSub3Level] = useState(85);
 
+  // Максимальные очки для каждого типа класса
+  const maxPointsPerClass = useMemo(() => {
+    if (serverType === "low-rate") {
+      return {
+        main: calculateMainClassPointsLowRate(85), // 23
+        sub: calculateSubClassPointsLowRate(85), // 16
+      };
+    } else {
+      return {
+        main: calculateMainClassPointsMidRate(85), // 22
+        sub: calculateSubClassPointsMidRate(85), // 12
+      };
+    }
+  }, [serverType]);
+
   // Рассчитываем очки талантов
   const calculatedPoints = useMemo(() => {
     let mainPoints: number;
@@ -177,6 +192,7 @@ export const TalentPointsCalculator = ({
             value={mainLevel}
             onChange={setMainLevel}
             points={calculatedPoints.main}
+            maxPoints={maxPointsPerClass.main}
           />
         </div>
 
@@ -187,18 +203,21 @@ export const TalentPointsCalculator = ({
             value={sub1Level}
             onChange={setSub1Level}
             points={calculatedPoints.sub1}
+            maxPoints={maxPointsPerClass.sub}
           />
           <LevelInput
             label="Саб-класс 2"
             value={sub2Level}
             onChange={setSub2Level}
             points={calculatedPoints.sub2}
+            maxPoints={maxPointsPerClass.sub}
           />
           <LevelInput
             label="Саб-класс 3"
             value={sub3Level}
             onChange={setSub3Level}
             points={calculatedPoints.sub3}
+            maxPoints={maxPointsPerClass.sub}
           />
         </div>
 

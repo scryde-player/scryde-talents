@@ -11,7 +11,8 @@ export const LevelInput = ({
   min = 1,
   max = 85,
   points,
-}: LevelInputProps & { points?: number }) => {
+  maxPoints,
+}: LevelInputProps & { points?: number; maxPoints?: number }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const rawValue = e.target.value;
 
@@ -61,6 +62,9 @@ export const LevelInput = ({
       {points !== undefined && (
         <span className={styles.pointsInfo}>
           {points} {declension(points, ["очко", "очка", "очков"])}
+          {maxPoints !== undefined && (
+            <span className={styles.maxPoints}> (из {maxPoints})</span>
+          )}
         </span>
       )}
     </div>

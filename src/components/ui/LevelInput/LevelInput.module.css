@@ -43,6 +43,9 @@
   color: #88aa88;
   font-size: 10px;
   text-align: left;
-  margin-left: 4px;
   margin-top: -2px;
+}
+
+.maxPoints {
+  color: #777766;
 }

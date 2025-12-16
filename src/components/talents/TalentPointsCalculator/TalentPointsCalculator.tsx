@@ -131,15 +131,15 @@ export const TalentPointsCalculator = ({
 
         <h2 className={styles.title}>Калькулятор очков талантов</h2>
 
-        {/* Количество очков (ридонли) */}
-        <div className={styles.pointsDisplay}>
-          <span className={styles.pointsLabel}>Очков талантов:</span>
-          <span className={styles.pointsValue}>
-            {calculatedPoints.total}
-            {calculatedPoints.uncapped > MAX_POINTS && (
-              <span className={styles.cappedNote}> (из {calculatedPoints.uncapped})</span>
-            )}
-          </span>
+        {/* Количество очков и кнопка OK в одну строку */}
+        <div className={styles.pointsRow}>
+          <div className={styles.pointsDisplay}>
+            <span className={styles.pointsLabel}>Очков талантов:</span>
+            <span className={styles.pointsValue}>{calculatedPoints.total}</span>
+          </div>
+          <button className={styles.applyButton} onClick={handleApply}>
+            OK
+          </button>
         </div>
 
         {/* Выбор сервера */}
@@ -161,67 +161,43 @@ export const TalentPointsCalculator = ({
           </div>
         </div>
 
-        {/* Уровень основного класса */}
+        {/* Уровни классов */}
+        <span className={styles.sectionLabel}>Уровни классов:</span>
         <div className={styles.levelSection}>
-          <span className={styles.sectionLabel}>Основной класс:</span>
-          <div className={styles.levelRow}>
-            <LevelInput
-              label="Уровень"
-              value={mainLevel}
-              onChange={setMainLevel}
-            />
-            <span className={styles.pointsInfo}>
-              = {calculatedPoints.main} очков
-            </span>
-          </div>
+          <LevelInput
+            label="Основной класс"
+            value={mainLevel}
+            onChange={setMainLevel}
+            points={calculatedPoints.main}
+          />
         </div>
 
-        {/* Уровни саб-классов */}
-        <div className={styles.levelSection}>
-          <span className={styles.sectionLabel}>Саб-классы:</span>
-          <div className={styles.subClassesGrid}>
-            <div className={styles.levelRow}>
-              <LevelInput
-                label="Саб-класс 1"
-                value={sub1Level}
-                onChange={setSub1Level}
-              />
-              <span className={styles.pointsInfo}>
-                = {calculatedPoints.sub1} очков
-              </span>
-            </div>
-            <div className={styles.levelRow}>
-              <LevelInput
-                label="Саб-класс 2"
-                value={sub2Level}
-                onChange={setSub2Level}
-              />
-              <span className={styles.pointsInfo}>
-                = {calculatedPoints.sub2} очков
-              </span>
-            </div>
-            <div className={styles.levelRow}>
-              <LevelInput
-                label="Саб-класс 3"
-                value={sub3Level}
-                onChange={setSub3Level}
-              />
-              <span className={styles.pointsInfo}>
-                = {calculatedPoints.sub3} очков
-              </span>
-            </div>
-          </div>
+        {/* Уровни саб-классов в одну строку */}
+        <div className={styles.subClassesRow}>
+          <LevelInput
+            label="Саб-класс 1"
+            value={sub1Level}
+            onChange={setSub1Level}
+            points={calculatedPoints.sub1}
+          />
+          <LevelInput
+            label="Саб-класс 2"
+            value={sub2Level}
+            onChange={setSub2Level}
+            points={calculatedPoints.sub2}
+          />
+          <LevelInput
+            label="Саб-класс 3"
+            value={sub3Level}
+            onChange={setSub3Level}
+            points={calculatedPoints.sub3}
+          />
         </div>
 
         {/* Правила расчета */}
         <div className={styles.rulesSection}>
           {rulesText}
         </div>
-
-        {/* Кнопка применить */}
-        <button className={styles.applyButton} onClick={handleApply}>
-          OK
-        </button>
       </div>
     </div>
   );

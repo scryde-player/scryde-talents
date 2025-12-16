@@ -6,14 +6,14 @@
 
 .label {
   color: #bbaa88;
-  font-size: 11px;
+  font-size: 10px;
   text-shadow: 1px 1px 1px #010101;
 }
 
 .input {
-  width: 70px;
-  height: 28px;
-  padding: 4px 8px;
+  width: 60px;
+  height: 26px;
+  padding: 4px 6px;
   background: linear-gradient(180deg, #1a1810 0%, #2a2820 100%);
   border: 1px solid #4a4535;
   border-radius: 3px;
@@ -39,3 +39,10 @@
   -moz-appearance: textfield;
 }
 
+.pointsInfo {
+  color: #88aa88;
+  font-size: 10px;
+  text-align: left;
+  margin-left: 4px;
+  margin-top: -2px;
+}

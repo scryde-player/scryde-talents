@@ -7,6 +7,7 @@ interface PointsControlsProps {
   totalPoints: number;
   onIncrement: () => void;
   onDecrement: () => void;
+  onResetPoints: () => void;
   onOpenCalculator: () => void;
 }
 
@@ -14,6 +15,7 @@ export const PointsControls = ({
   totalPoints,
   onIncrement,
   onDecrement,
+  onResetPoints,
   onOpenCalculator,
 }: PointsControlsProps) => {
   return (
@@ -38,6 +40,29 @@ export const PointsControls = ({
         aria-label="Убрать очко талантов"
       >
         −
+      </button>
+
+      {/* Кнопка сброса количества очков */}
+      <button
+        className={`${styles.button} ${styles.resetPointsButton}`}
+        onClick={onResetPoints}
+        disabled={totalPoints === MAX_POINTS}
+        title="Сбросить количество очков"
+        aria-label="Сбросить количество очков талантов"
+      >
+        <svg
+          width="12"
+          height="12"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+          <path d="M3 3v5h5" />
+        </svg>
       </button>
 
       {/* Кнопка калькулятора */}

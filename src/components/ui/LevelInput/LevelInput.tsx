@@ -1,6 +1,7 @@
 "use client";
 
 import { LevelInputProps } from "@/types/talents";
+import { declension } from "@/utils/declension";
 import styles from "./LevelInput.module.css";
 
 export const LevelInput = ({
@@ -9,22 +10,23 @@ export const LevelInput = ({
   onChange,
   min = 1,
   max = 85,
-}: LevelInputProps) => {
+  points,
+}: LevelInputProps & { points?: number }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const rawValue = e.target.value;
-    
+
     // Разрешаем пустое значение при вводе
     if (rawValue === "") {
       onChange(min);
       return;
     }
-    
+
     const numValue = parseInt(rawValue, 10);
-    
+
     if (isNaN(numValue)) {
       return;
     }
-    
+
     // Применяем ограничения
     if (numValue < min) {
       onChange(min);
@@ -56,6 +58,11 @@ export const LevelInput = ({
         min={min}
         max={max}
       />
+      {points !== undefined && (
+        <span className={styles.pointsInfo}>
+          {points} {declension(points, ["очко", "очка", "очков"])}
+        </span>
+      )}
     </div>
   );
 };

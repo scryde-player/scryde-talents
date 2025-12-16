@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { TalentsWindowProps } from "@/types/talents";
 import { TalentsPanel } from "../TalentsPanel";
-import { PanelVariant } from "@/lib/constants";
+import { PanelVariant, MAX_POINTS } from "@/lib/constants";
 import { SKILLSETS } from "@/lib/skillsets";
 import { useTalents } from "@/contexts/TalentsContext";
 import styles from "./TalentsWindow.module.css";
@@ -13,10 +13,10 @@ import { useParams } from "next/navigation";
 import { encodeBuild, decodeBuild, createBuildLink } from "@/utils/encoding";
 
 export const TalentsWindow = ({ profession }: TalentsWindowProps) => {
-  const { 
-    availablePoints, 
-    reset, 
-    setSkillsets, 
+  const {
+    availablePoints,
+    reset,
+    setSkillsets,
     skills,
     totalPoints,
     incrementTotalPoints,
@@ -25,8 +25,13 @@ export const TalentsWindow = ({ profession }: TalentsWindowProps) => {
   } = useTalents();
   const params = useParams();
   const raceId = params.race as string;
-  
+
   const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
+
+  // Сброс количества очков на дефолтное значение
+  const handleResetPoints = useCallback(() => {
+    setTotalPoints(MAX_POINTS);
+  }, [setTotalPoints]);
 
   // Получаем скиллы для текущей профессии
   const professionSkills =
@@ -80,11 +85,12 @@ export const TalentsWindow = ({ profession }: TalentsWindowProps) => {
             totalPoints={totalPoints}
             onIncrement={incrementTotalPoints}
             onDecrement={decrementTotalPoints}
+            onResetPoints={handleResetPoints}
             onOpenCalculator={() => setIsCalculatorOpen(true)}
           />
         </div>
       </div>
-      
+
       {/* Калькулятор очков талантов */}
       <TalentPointsCalculator
         isOpen={isCalculatorOpen}

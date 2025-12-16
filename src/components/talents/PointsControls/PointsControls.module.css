@@ -50,6 +50,21 @@
   box-shadow: 0 0 4px rgba(221, 170, 170, 0.2);
 }
 
+.resetPointsButton {
+  width: 20px;
+}
+
+.resetPointsButton:hover:not(:disabled) {
+  border-color: #5588aa;
+  color: #aaddff;
+  box-shadow: 0 0 4px rgba(170, 221, 255, 0.2);
+}
+
+.resetPointsButton svg {
+  width: 12px;
+  height: 12px;
+}
+
 .calculatorButton {
   width: 20px;
 }
@@ -63,4 +78,3 @@
   width: 12px;
   height: 12px;
 }
-

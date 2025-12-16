@@ -13,27 +13,27 @@
 
 .modal {
   position: relative;
-  width: 380px;
-  padding: 24px;
+  width: 340px;
+  padding: 16px;
   background: linear-gradient(180deg, #1e1c18 0%, #151310 100%);
   border: 2px solid #4a4535;
   border-radius: 6px;
-  box-shadow: 
+  box-shadow:
     0 0 20px rgba(0, 0, 0, 0.8),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .closeButton {
   position: absolute;
-  top: 8px;
-  right: 8px;
-  width: 28px;
-  height: 28px;
+  top: 6px;
+  right: 6px;
+  width: 24px;
+  height: 24px;
   background: transparent;
   border: 1px solid #4a4535;
   border-radius: 4px;
   color: #bbaa88;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -49,21 +49,27 @@
 }
 
 .title {
-  margin: 0 0 20px 0;
+  margin: 0 0 12px 0;
   color: #ffdd66;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   text-align: center;
   text-shadow: 1px 1px 2px #010101;
 }
 
-.pointsDisplay {
+.pointsRow {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 12px;
-  padding: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
+}
+
+.pointsDisplay {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
   background: rgba(0, 0, 0, 0.3);
   border: 1px solid #3a3525;
   border-radius: 4px;
@@ -71,47 +77,61 @@
 
 .pointsLabel {
   color: #bbaa88;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .pointsValue {
   color: #ffdd66;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 700;
   text-shadow: 0 0 10px rgba(255, 221, 102, 0.4);
 }
 
-.cappedNote {
-  color: #aa8866;
-  font-size: 12px;
-  font-weight: 400;
+.applyButton {
+  padding: 8px 20px;
+  background: linear-gradient(180deg, #4a6535 0%, #3a5525 100%);
+  border: 1px solid #6a8555;
+  border-radius: 4px;
+  color: #ccddaa;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-shadow: 1px 1px 1px #010101;
+}
+
+.applyButton:hover {
+  background: linear-gradient(180deg, #5a7545 0%, #4a6535 100%);
+  border-color: #8aa565;
+  box-shadow: 0 0 12px rgba(170, 221, 136, 0.3);
 }
 
 .serverSelection {
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 .sectionLabel {
   display: block;
   color: #bbaa88;
-  font-size: 12px;
-  margin-bottom: 8px;
+  font-size: 11px;
+  margin-bottom: 6px;
   text-shadow: 1px 1px 1px #010101;
 }
 
 .serverButtons {
   display: flex;
-  gap: 8px;
+  gap: 6px;
 }
 
 .serverButton {
   flex: 1;
-  padding: 10px 16px;
+  padding: 8px 12px;
   background: linear-gradient(180deg, #2a2820 0%, #1a1810 100%);
   border: 1px solid #4a4535;
   border-radius: 4px;
   color: #bbaa88;
-  font-size: 12px;
+  font-size: 11px;
   font-family: "Roboto", sans-serif;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -130,31 +150,18 @@
 }
 
 .levelSection {
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
-.levelRow {
+.subClassesRow {
   display: flex;
-  align-items: flex-end;
-  gap: 12px;
-  margin-bottom: 8px;
-}
-
-.subClassesGrid {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.pointsInfo {
-  color: #88aa88;
-  font-size: 11px;
-  padding-bottom: 4px;
+  gap: 36px;
+  margin-bottom: 10px;
 }
 
 .rulesSection {
-  margin: 20px 0;
-  padding: 12px;
+  margin-top: 12px;
+  padding: 10px;
   background: rgba(0, 0, 0, 0.3);
   border: 1px solid #3a3525;
   border-radius: 4px;
@@ -162,36 +169,14 @@
 
 .rulesContent {
   color: #998877;
-  font-size: 11px;
-  line-height: 1.6;
+  font-size: 10px;
+  line-height: 1.5;
 }
 
 .rulesContent p {
-  margin: 0 0 4px 0;
+  margin: 0 0 3px 0;
 }
 
 .rulesContent strong {
   color: #bbaa88;
 }
-
-.applyButton {
-  width: 100%;
-  padding: 12px;
-  background: linear-gradient(180deg, #4a6535 0%, #3a5525 100%);
-  border: 1px solid #6a8555;
-  border-radius: 4px;
-  color: #ccddaa;
-  font-size: 14px;
-  font-weight: 500;
-  font-family: "Roboto", sans-serif;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-shadow: 1px 1px 1px #010101;
-}
-
-.applyButton:hover {
-  background: linear-gradient(180deg, #5a7545 0%, #4a6535 100%);
-  border-color: #8aa565;
-  box-shadow: 0 0 12px rgba(170, 221, 136, 0.3);
-}
-

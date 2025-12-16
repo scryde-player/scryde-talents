@@ -72,37 +72,46 @@ export const TalentsProvider: React.FC<TalentsProviderProps> = ({
   const [totalPoints, setTotalPointsState] = useState(MAX_POINTS);
 
   // Функция для установки общего количества очков
-  const setTotalPoints = useCallback((points: number) => {
-    const clampedPoints = Math.min(Math.max(1, points), MAX_POINTS);
-    const usedPoints = Object.values(skills).reduce((sum, level) => sum + level, 0);
-    
-    // Если использовано больше очков, чем новый лимит - сбрасываем скиллы
-    if (usedPoints > clampedPoints) {
-      setSkills({});
-      setPanels({});
-      setAvailablePoints(clampedPoints);
-    } else {
-      setAvailablePoints(clampedPoints - usedPoints);
-    }
-    
-    setTotalPointsState(clampedPoints);
-  }, [skills]);
+  const setTotalPoints = useCallback(
+    (points: number) => {
+      const clampedPoints = Math.min(Math.max(1, points), MAX_POINTS);
+      const usedPoints = Object.values(skills).reduce(
+        (sum, level) => sum + level,
+        0,
+      );
+
+      // Если использовано больше очков, чем новый лимит - сбрасываем скиллы
+      if (usedPoints > clampedPoints) {
+        setSkills({});
+        setPanels({});
+        setAvailablePoints(clampedPoints);
+      } else {
+        setAvailablePoints(clampedPoints - usedPoints);
+      }
+
+      setTotalPointsState(clampedPoints);
+    },
+    [skills],
+  );
 
   // Увеличить общее количество очков на 1
   const incrementTotalPoints = useCallback((): boolean => {
     if (totalPoints >= MAX_POINTS) return false;
-    setTotalPointsState(prev => prev + 1);
-    setAvailablePoints(prev => prev + 1);
+    setTotalPointsState((prev) => prev + 1);
+    setAvailablePoints((prev) => prev + 1);
     return true;
   }, [totalPoints]);
 
   // Уменьшить общее количество очков на 1
   const decrementTotalPoints = useCallback((): boolean => {
     if (totalPoints <= 1) return false;
-    
-    const usedPoints = Object.values(skills).reduce((sum, level) => sum + level, 0);
+
+    const usedPoints = Object.values(skills).reduce(
+      (sum, level) => sum + level,
+      0,
+    );
     const newTotal = totalPoints - 1;
-    
+
     // Если использовано больше очков, чем новый лимит - сбрасываем скиллы
     if (usedPoints > newTotal) {
       setSkills({});
@@ -111,7 +120,7 @@ export const TalentsProvider: React.FC<TalentsProviderProps> = ({
     } else {
       setAvailablePoints(newTotal - usedPoints);
     }
-    
+
     setTotalPointsState(newTotal);
     return true;
   }, [totalPoints, skills]);

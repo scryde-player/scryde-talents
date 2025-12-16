@@ -1,2 +1,1 @@
 export { TalentPointsCalculator } from "./TalentPointsCalculator";
-

@@ -96,7 +96,9 @@ export const TalentPointsCalculator = ({
     if (serverType === "low-rate") {
       return (
         <div className={styles.rulesContent}>
-          <p><strong>Лоу-рейт сервер:</strong></p>
+          <p>
+            <strong>Лоу-рейт сервер:</strong>
+          </p>
           <p>• Основной класс: 1 очко каждые 2 уровня (с 40 по 84)</p>
           <p>• Саб-класс: 1 очко каждые 3 уровня (с 40 по 85)</p>
           <p>• Максимум: {MAX_POINTS} очков</p>
@@ -105,7 +107,9 @@ export const TalentPointsCalculator = ({
     } else {
       return (
         <div className={styles.rulesContent}>
-          <p><strong>Мид-рейт сервер:</strong></p>
+          <p>
+            <strong>Мид-рейт сервер:</strong>
+          </p>
           <p>• Основной класс: 1 очко каждые 2 уровня (с 42 по 84)</p>
           <p>• Саб-класс: 1 очко каждые 4 уровня (с 40 по 84)</p>
           <p>• Максимум: {MAX_POINTS} очков</p>
@@ -125,7 +129,11 @@ export const TalentPointsCalculator = ({
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         {/* Кнопка закрытия */}
-        <button className={styles.closeButton} onClick={onClose} title="Закрыть">
+        <button
+          className={styles.closeButton}
+          onClick={onClose}
+          title="Закрыть"
+        >
           ×
         </button>
 
@@ -195,11 +203,8 @@ export const TalentPointsCalculator = ({
         </div>
 
         {/* Правила расчета */}
-        <div className={styles.rulesSection}>
-          {rulesText}
-        </div>
+        <div className={styles.rulesSection}>{rulesText}</div>
       </div>
     </div>
   );
 };
-

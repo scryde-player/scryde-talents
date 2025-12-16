@@ -25,7 +25,7 @@ export const TalentsSkill = ({
   const handleTouchStart = (e: React.TouchEvent) => {
     hasLongPressRef.current = false;
     touchStartTimeRef.current = Date.now();
-    
+
     longPressTimerRef.current = setTimeout(() => {
       hasLongPressRef.current = true;
       // Создаем синтетическое событие для совместимости с onRightClick
@@ -78,9 +78,8 @@ export const TalentsSkill = ({
       onMouseLeave={() => setIsHovered(false)}
     >
       <div
-        className={`${styles.skillImage} ${
-          currentLevel > 0 ? styles.skillImageActive : ""
-        }`}
+        className={`${styles.skillImage} ${currentLevel > 0 ? styles.skillImageActive : ""
+          }`}
         style={{
           backgroundImage: `url(${skill.icon})`,
           backgroundPositionX: `${-3 - skill.index * 72}px`,

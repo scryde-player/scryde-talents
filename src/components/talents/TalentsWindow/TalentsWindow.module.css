@@ -55,6 +55,11 @@
   /* Счетчик очков */
 }
 
+.totalPoints {
+  color: #887766;
+  font-size: 10px;
+}
+
 .resetButton {
   position: absolute;
   left: 12px;

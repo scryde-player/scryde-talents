@@ -79,7 +79,10 @@ export const TalentsWindow = ({ profession }: TalentsWindowProps) => {
         </div>
         <div className={styles.pointsSection}>
           <div className={styles.pointsCounter}>
-            <span className="points-text">{availablePoints}</span>
+            <span className="points-text">
+              {availablePoints}
+              <span className={styles.totalPoints}> (из {totalPoints})</span>
+            </span>
           </div>
           <PointsControls
             totalPoints={totalPoints}

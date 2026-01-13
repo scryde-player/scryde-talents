@@ -132,46 +132,46 @@
 }
 
 .levelItem.available {
-  background: rgba(90, 77, 53, 0.15);
+  /* Следующий доступный уровень - без подсветки */
 }
 
 .levelItem.available .levelNumber {
-  background: rgba(90, 77, 53, 0.5);
-  border-color: #5a4d35;
-  color: #c0b090;
+  /* Базовый стиль без изменений */
 }
 
 .levelItem.available .levelBonus {
-  color: #b8a888;
+  /* Базовый стиль без изменений */
 }
 
 .levelItem.current {
-  background: rgba(180, 150, 80, 0.2);
+  /* Текущий выученный уровень - ярко зеленый (спокойный) */
+  background: rgba(106, 154, 90, 0.2);
 }
 
 .levelItem.current .levelNumber {
-  background: linear-gradient(180deg, #8a7040 0%, #6a5030 100%);
-  border-color: #a08050;
+  background: linear-gradient(180deg, #6a9a5a 0%, #5a8a4a 100%);
+  border-color: #6a9a5a;
   color: #fff;
 }
 
 .levelItem.current .levelBonus {
-  color: #d4c4a8;
+  color: #a0d090;
   font-weight: 500;
 }
 
 .levelItem.learned {
-  background: rgba(80, 120, 60, 0.15);
+  /* Прошлые выученные уровни - зеленые (темнее текущего) */
+  background: rgba(90, 122, 74, 0.15);
 }
 
 .levelItem.learned .levelNumber {
-  background: linear-gradient(180deg, #4a6030 0%, #3a4820 100%);
-  border-color: #5a7040;
-  color: #c0d0a0;
+  background: linear-gradient(180deg, #5a7a4a 0%, #4a6a3a 100%);
+  border-color: #5a7a4a;
+  color: #b0c8a0;
 }
 
 .levelItem.learned .levelBonus {
-  color: #a0b888;
+  color: #90b080;
 }
 
 /* Требования */

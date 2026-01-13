@@ -35,16 +35,31 @@ export const TalentsPanel = ({
         {declension(panels[skillset.id] || 0, ["очко", "очка", "очков"])}
       </div>
       <div className={styles.skillsGrid}>
-        {skillset.skills.map((skill, index) => (
-          <div key={skill.id || index} className={styles.skillSlot}>
-            <TalentsSkill
-              skill={skill}
-              currentLevel={skills[skill.id] || 0}
-              onLeftClick={handleSkillLeftClick(skill.id, skill.maxLevel)}
-              onRightClick={handleSkillRightClick(skill.id)}
-            />
-          </div>
-        ))}
+        {skillset.skills.map((skill, index) => {
+          // Проверяем, изучен ли требуемый навык
+          let isRequiredAbilityLearned = false;
+          if (skill.requiredAbilityId) {
+            const requiredSkill = skillset.skills.find(
+              (s) => s.abilityId === skill.requiredAbilityId,
+            );
+            if (requiredSkill) {
+              isRequiredAbilityLearned = (skills[requiredSkill.id] || 0) > 0;
+            }
+          }
+
+          return (
+            <div key={skill.id || index} className={styles.skillSlot}>
+              <TalentsSkill
+                skill={skill}
+                currentLevel={skills[skill.id] || 0}
+                onLeftClick={handleSkillLeftClick(skill.id, skill.maxLevel)}
+                onRightClick={handleSkillRightClick(skill.id)}
+                currentPointsInBranch={panels[skillset.id] || 0}
+                isRequiredAbilityLearned={isRequiredAbilityLearned}
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );

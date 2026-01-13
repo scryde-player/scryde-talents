@@ -5,7 +5,7 @@ import {
   SkillData,
 } from "@/types/talents";
 import { RACES } from "./races";
-import talentsData from "../../data/processed/talents_04.09.2025.json";
+import talentsData from "../../data/processed/talents_13.01.2026.json";
 
 const IMAGE_PREFIX = `/assets/images/skills`;
 

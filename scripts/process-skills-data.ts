@@ -23,6 +23,7 @@ interface SkillData {
   requiredPoints: number;
   requiredAbilityId?: number;
   requiredAbilityName?: string;
+  minLevel?: number; // Минимальный уровень персонажа для изучения навыка
   levelBonuses: string[];
   tier: number;
   index: number;
@@ -55,6 +56,7 @@ interface ParsedAbility {
   requiredPoints: number;
   requiredAbilityId?: number;
   requiredAbilityName?: string;
+  minLevel?: number; // Минимальный уровень персонажа
   descriptionsAddress: string;
 }
 
@@ -195,6 +197,26 @@ function parseAbilitiesXML(xmlContent: string): ParsedAbility[] {
     const skillIdMatch = innerContent.match(/<skill\s+id="(\d+)"/);
     const skillId = skillIdMatch ? parseInt(skillIdMatch[1], 10) : 0;
 
+    // Извлекаем min_level из первого level (минимальный уровень персонажа)
+    // Ищем все skill элементы в первом level и берём минимальный min_level
+    const firstLevelMatch = innerContent.match(
+      /<level\s+value="1">([\s\S]*?)<\/level>/,
+    );
+    let minLevel: number | undefined = undefined;
+    if (firstLevelMatch) {
+      const firstLevelContent = firstLevelMatch[1];
+      const skillMatches = firstLevelContent.matchAll(
+        /<skill\s+[^>]*min_level="(\d+)"[^>]*>/g,
+      );
+      const minLevels: number[] = [];
+      for (const match of skillMatches) {
+        minLevels.push(parseInt(match[1], 10));
+      }
+      if (minLevels.length > 0) {
+        minLevel = Math.min(...minLevels);
+      }
+    }
+
     abilities.push({
       abilityId: parseInt(abilityId, 10),
       skillId,
@@ -204,6 +226,7 @@ function parseAbilitiesXML(xmlContent: string): ParsedAbility[] {
       requiredPoints,
       requiredAbilityId,
       requiredAbilityName,
+      minLevel,
       descriptionsAddress,
     });
   }
@@ -302,6 +325,7 @@ function createSkillset(
       requiredPoints: ability.requiredPoints,
       requiredAbilityId: ability.requiredAbilityId,
       requiredAbilityName: ability.requiredAbilityName,
+      minLevel: ability.minLevel,
       levelBonuses: bonuses,
       tier,
       index: indexInTier,

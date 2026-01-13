@@ -28,6 +28,8 @@ export interface SkillData {
   requiredAbilityId?: number;
   /** Название требуемой способности (для отображения) */
   requiredAbilityName?: string;
+  /** Минимальный уровень персонажа для изучения навыка */
+  minLevel?: number;
   /** Описания бонусов для каждого уровня */
   levelBonuses: string[];
   /** Номер tier (0-5) */
@@ -114,6 +116,10 @@ export interface TalentsSkillProps {
   currentLevel: number;
   onLeftClick: () => void;
   onRightClick: (e: React.MouseEvent) => void;
+  /** Текущее количество очков в ветке для проверки требований */
+  currentPointsInBranch?: number;
+  /** Изучен ли требуемый навык (для проверки зависимости) */
+  isRequiredAbilityLearned?: boolean;
 }
 
 /**
@@ -138,6 +144,10 @@ export interface ShareButtonProps {
 export interface SkillTooltipProps {
   skill: TalentSkill;
   currentLevel: number;
+  /** Текущее количество очков в ветке для проверки требований */
+  currentPointsInBranch?: number;
+  /** Изучен ли требуемый навык (для проверки зависимости) */
+  isRequiredAbilityLearned?: boolean;
 }
 
 /**

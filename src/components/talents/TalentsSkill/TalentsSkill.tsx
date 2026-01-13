@@ -10,6 +10,8 @@ export const TalentsSkill = ({
   currentLevel,
   onLeftClick,
   onRightClick,
+  currentPointsInBranch = 0,
+  isRequiredAbilityLearned = false,
 }: TalentsSkillProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const skillRef = useRef<HTMLDivElement>(null);
@@ -78,9 +80,8 @@ export const TalentsSkill = ({
       onMouseLeave={() => setIsHovered(false)}
     >
       <div
-        className={`${styles.skillImage} ${
-          currentLevel > 0 ? styles.skillImageActive : ""
-        }`}
+        className={`${styles.skillImage} ${currentLevel > 0 ? styles.skillImageActive : ""
+          }`}
         style={{
           backgroundImage: `url(${skill.icon})`,
           backgroundPositionX: `${-3 - skill.index * 72}px`,
@@ -93,7 +94,14 @@ export const TalentsSkill = ({
         </span>
       </div>
 
-      {isHovered && <SkillTooltip skill={skill} currentLevel={currentLevel} />}
+      {isHovered && (
+        <SkillTooltip
+          skill={skill}
+          currentLevel={currentLevel}
+          currentPointsInBranch={currentPointsInBranch}
+          isRequiredAbilityLearned={isRequiredAbilityLearned}
+        />
+      )}
     </div>
   );
 };

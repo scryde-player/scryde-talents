@@ -8,8 +8,21 @@ const ICONS_PATH = "/assets/images/skills_icons";
 /**
  * Компонент тултипа для отображения информации о навыке
  */
-export const SkillTooltip = ({ skill, currentLevel }: SkillTooltipProps) => {
+export const SkillTooltip = ({
+  skill,
+  currentLevel,
+  currentPointsInBranch = 0,
+  isRequiredAbilityLearned = false,
+}: SkillTooltipProps) => {
   const iconSrc = `${ICONS_PATH}/TalentIcon_${skill.iconId}.png`;
+
+  // Проверяем, выполнено ли требование по очкам
+  const isPointsRequirementMet =
+    skill.requiredPoints > 0 && currentPointsInBranch >= skill.requiredPoints;
+
+  // Проверяем, изучен ли требуемый навык
+  const isAbilityRequirementMet =
+    skill.requiredAbilityId !== undefined && isRequiredAbilityLearned;
 
   /**
    * Определяет CSS класс для элемента уровня
@@ -68,24 +81,45 @@ export const SkillTooltip = ({ skill, currentLevel }: SkillTooltipProps) => {
         )}
 
         {/* Требования (если есть) */}
-        {(skill.requiredPoints > 0 || skill.requiredAbilityName) && (
-          <div className={styles.requirements}>
-            {skill.requiredPoints > 0 && (
-              <div className={styles.requirement}>
-                <span className={styles.requirementNotMet}>
-                  Требуется {skill.requiredPoints} очков в ветке
-                </span>
-              </div>
-            )}
-            {skill.requiredAbilityName && (
-              <div className={styles.requirement}>
-                <span className={styles.requirementNotMet}>
-                  Требуется навык: {skill.requiredAbilityName}
-                </span>
-              </div>
-            )}
-          </div>
-        )}
+        {(skill.requiredPoints > 0 ||
+          skill.requiredAbilityName ||
+          skill.minLevel) && (
+            <div className={styles.requirements}>
+              {skill.requiredPoints > 0 && (
+                <div className={styles.requirement}>
+                  <span
+                    className={
+                      isPointsRequirementMet
+                        ? styles.requirementMet
+                        : styles.requirementNotMet
+                    }
+                  >
+                    Требуется {skill.requiredPoints} очков в ветке
+                  </span>
+                </div>
+              )}
+              {skill.requiredAbilityName && (
+                <div className={styles.requirement}>
+                  <span
+                    className={
+                      isAbilityRequirementMet
+                        ? styles.requirementMet
+                        : styles.requirementNotMet
+                    }
+                  >
+                    Требуется навык: {skill.requiredAbilityName}
+                  </span>
+                </div>
+              )}
+              {skill.minLevel && (
+                <div className={styles.requirement}>
+                  <span className={styles.requirementNotMet}>
+                    Требуется уровень персонажа: {skill.minLevel}
+                  </span>
+                </div>
+              )}
+            </div>
+          )}
       </div>
     </div>
   );

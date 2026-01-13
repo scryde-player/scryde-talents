@@ -10,11 +10,9 @@
 }
 
 .container {
-  background: linear-gradient(
-    180deg,
-    rgba(20, 18, 15, 0.97) 0%,
-    rgba(12, 10, 8, 0.98) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(20, 18, 15, 0.97) 0%,
+      rgba(12, 10, 8, 0.98) 100%);
   border: 1px solid #5a4d35;
   border-radius: 2px;
   box-shadow:
@@ -29,11 +27,9 @@
   align-items: center;
   gap: 10px;
   padding: 10px 12px;
-  background: linear-gradient(
-    90deg,
-    rgba(90, 77, 53, 0.3) 0%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg,
+      rgba(90, 77, 53, 0.3) 0%,
+      transparent 100%);
   border-bottom: 1px solid rgba(90, 77, 53, 0.4);
 }
 
@@ -198,7 +194,8 @@
 }
 
 .requirementMet {
-  color: #80a060;
+  color: #8a8070;
+  /* Серый цвет для выполненных требований */
 }
 
 .requirementNotMet {

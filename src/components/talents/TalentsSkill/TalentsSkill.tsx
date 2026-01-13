@@ -80,8 +80,9 @@ export const TalentsSkill = ({
       onMouseLeave={() => setIsHovered(false)}
     >
       <div
-        className={`${styles.skillImage} ${currentLevel > 0 ? styles.skillImageActive : ""
-          }`}
+        className={`${styles.skillImage} ${
+          currentLevel > 0 ? styles.skillImageActive : ""
+        }`}
         style={{
           backgroundImage: `url(${skill.icon})`,
           backgroundPositionX: `${-3 - skill.index * 72}px`,

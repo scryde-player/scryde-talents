@@ -84,42 +84,42 @@ export const SkillTooltip = ({
         {(skill.requiredPoints > 0 ||
           skill.requiredAbilityName ||
           skill.minLevel) && (
-            <div className={styles.requirements}>
-              {skill.requiredPoints > 0 && (
-                <div className={styles.requirement}>
-                  <span
-                    className={
-                      isPointsRequirementMet
-                        ? styles.requirementMet
-                        : styles.requirementNotMet
-                    }
-                  >
-                    Требуется {skill.requiredPoints} очков в ветке
-                  </span>
-                </div>
-              )}
-              {skill.requiredAbilityName && (
-                <div className={styles.requirement}>
-                  <span
-                    className={
-                      isAbilityRequirementMet
-                        ? styles.requirementMet
-                        : styles.requirementNotMet
-                    }
-                  >
-                    Требуется навык: {skill.requiredAbilityName}
-                  </span>
-                </div>
-              )}
-              {skill.minLevel && (
-                <div className={styles.requirement}>
-                  <span className={styles.requirementNotMet}>
-                    Требуется уровень персонажа: {skill.minLevel}
-                  </span>
-                </div>
-              )}
-            </div>
-          )}
+          <div className={styles.requirements}>
+            {skill.requiredPoints > 0 && (
+              <div className={styles.requirement}>
+                <span
+                  className={
+                    isPointsRequirementMet
+                      ? styles.requirementMet
+                      : styles.requirementNotMet
+                  }
+                >
+                  Требуется {skill.requiredPoints} очков в ветке
+                </span>
+              </div>
+            )}
+            {skill.requiredAbilityName && (
+              <div className={styles.requirement}>
+                <span
+                  className={
+                    isAbilityRequirementMet
+                      ? styles.requirementMet
+                      : styles.requirementNotMet
+                  }
+                >
+                  Требуется навык: {skill.requiredAbilityName}
+                </span>
+              </div>
+            )}
+            {skill.minLevel && (
+              <div className={styles.requirement}>
+                <span className={styles.requirementNotMet}>
+                  Требуется уровень персонажа: {skill.minLevel}
+                </span>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -3836,7 +3836,7 @@
           "abilityId": 22,
           "skillId": 93575,
           "name": "Magnetic Spear",
-          "description": "",
+          "description": "Призывает гигантское копье, атакует и парализует противников. Притягивает врагов к основной цели.",
           "iconId": "93575",
           "maxLevel": 1,
           "requiredPoints": 28,

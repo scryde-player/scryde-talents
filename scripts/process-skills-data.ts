@@ -60,6 +60,24 @@ interface ParsedAbility {
   descriptionsAddress: string;
 }
 
+interface ManualTalent {
+  skillId: number;
+  levelBonuses?: string[];
+  name?: string;
+  description?: string;
+  type?: "passive" | "active" | "toggle";
+  maxLevel?: number;
+  requiredPoints?: number;
+  requiredAbilityId?: number;
+  requiredAbilityName?: string;
+  minLevel?: number;
+  [key: string]: unknown; // Для поддержки других полей в будущем
+}
+
+interface ManualTalentsFile {
+  manual_talents: ManualTalent[];
+}
+
 // ============================================================================
 // КОНФИГУРАЦИЯ
 // ============================================================================
@@ -395,6 +413,85 @@ function createSkillset(
 }
 
 // ============================================================================
+// РУЧНЫЕ ТАЛАНТЫ
+// ============================================================================
+
+/**
+ * Загружает и парсит manual_talents.json
+ */
+function loadManualTalents(filePath: string): Map<number, ManualTalent> | undefined {
+  if (!fs.existsSync(filePath)) {
+    return undefined;
+  }
+
+  try {
+    const content = fs.readFileSync(filePath, "utf-8");
+    const data: ManualTalentsFile = JSON.parse(content);
+    const manualTalentsMap = new Map<number, ManualTalent>();
+
+    // Поддерживаем оба варианта названия ключа (с пробелом и без)
+    const talentsArray =
+      data.manual_talents ||
+      (data as unknown as { "manual_talents": ManualTalent[] })["manual_talents"];
+
+    if (talentsArray && Array.isArray(talentsArray)) {
+      for (const talent of talentsArray) {
+        if (talent.skillId !== undefined) {
+          manualTalentsMap.set(talent.skillId, talent);
+        }
+      }
+    }
+
+    return manualTalentsMap;
+  } catch (error) {
+    console.warn(`  ⚠️ Ошибка при загрузке manual_talents.json: ${error}`);
+    return undefined;
+  }
+}
+
+/**
+ * Применяет ручные таланты к навыкам в skillset
+ */
+function applyManualTalents(
+  skillset: SkillsetData,
+  manualTalents: Map<number, ManualTalent>,
+): void {
+  for (const skill of skillset.skills) {
+    const manualTalent = manualTalents.get(skill.skillId);
+    if (manualTalent) {
+      // Применяем все поля из manualTalent к skill
+      if (manualTalent.levelBonuses !== undefined) {
+        skill.levelBonuses = manualTalent.levelBonuses;
+      }
+      if (manualTalent.name !== undefined) {
+        skill.name = manualTalent.name;
+      }
+      if (manualTalent.description !== undefined) {
+        skill.description = manualTalent.description;
+      }
+      if (manualTalent.type !== undefined) {
+        skill.type = manualTalent.type;
+      }
+      if (manualTalent.maxLevel !== undefined) {
+        skill.maxLevel = manualTalent.maxLevel;
+      }
+      if (manualTalent.requiredPoints !== undefined) {
+        skill.requiredPoints = manualTalent.requiredPoints;
+      }
+      if (manualTalent.requiredAbilityId !== undefined) {
+        skill.requiredAbilityId = manualTalent.requiredAbilityId;
+      }
+      if (manualTalent.requiredAbilityName !== undefined) {
+        skill.requiredAbilityName = manualTalent.requiredAbilityName;
+      }
+      if (manualTalent.minLevel !== undefined) {
+        skill.minLevel = manualTalent.minLevel;
+      }
+    }
+  }
+}
+
+// ============================================================================
 // КОПИРОВАНИЕ ИКОНОК
 // ============================================================================
 
@@ -600,6 +697,28 @@ function main(): void {
     },
     classes: classSkillsets,
   };
+
+  // Загружаем и применяем ручные таланты (если файл существует)
+  const manualTalentsPath = path.join(rootDir, "data", "raw", "manual_talents.json");
+  const manualTalents = loadManualTalents(manualTalentsPath);
+
+  if (manualTalents && manualTalents.size > 0) {
+    console.log("\n🔧 Применение ручных талантов...");
+    console.log(`  Найдено ручных талантов: ${manualTalents.size}`);
+
+    // Применяем к общим веткам
+    applyManualTalents(outputData.common.berserk, manualTalents);
+    applyManualTalents(outputData.common.guardian, manualTalents);
+
+    // Применяем к классам
+    for (const skillset of Object.values(outputData.classes)) {
+      applyManualTalents(skillset, manualTalents);
+    }
+
+    console.log("  ✓ Ручные таланты применены");
+  } else {
+    console.log("\n🔧 Файл manual_talents.json не найден или пуст, пропускаем");
+  }
 
   // Сохраняем JSON
   const outputPath = path.join(processedDir, `talents_${dataDate}.json`);

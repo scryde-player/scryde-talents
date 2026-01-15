@@ -1,0 +1,10 @@
+{
+    "manual_talents": [
+        {
+            "skillId": 93276,
+            "levelBonuses": [
+                "Откат Умений -5%"
+            ]
+        }
+    ]
+}

@@ -1,6 +1,6 @@
 {
   "version": "13.01.2026",
-  "generatedAt": "2026-01-15T09:47:25.836Z",
+  "generatedAt": "2026-01-15T10:00:42.066Z",
   "common": {
     "berserk": {
       "id": "berserk",
@@ -1027,8 +1027,6 @@
           "maxLevel": 3,
           "requiredPoints": 24,
           "levelBonuses": [
-            "Откат Умений -1%",
-            "Откат Умений -3%",
             "Откат Умений -5%"
           ],
           "tier": 3,
@@ -1848,7 +1846,9 @@
           "iconId": "93276",
           "maxLevel": 1,
           "requiredPoints": 27,
-          "levelBonuses": [],
+          "levelBonuses": [
+            "Откат Умений -5%"
+          ],
           "tier": 4,
           "index": 1
         },
@@ -2623,7 +2623,9 @@
           "iconId": "93276",
           "maxLevel": 1,
           "requiredPoints": 27,
-          "levelBonuses": [],
+          "levelBonuses": [
+            "Откат Умений -5%"
+          ],
           "tier": 4,
           "index": 1
         },
@@ -3333,8 +3335,6 @@
           "maxLevel": 3,
           "requiredPoints": 24,
           "levelBonuses": [
-            "Откат Умений -1%",
-            "Откат Умений -3%",
             "Откат Умений -5%"
           ],
           "tier": 3,
@@ -5348,7 +5348,9 @@
           "iconId": "93276",
           "maxLevel": 1,
           "requiredPoints": 27,
-          "levelBonuses": [],
+          "levelBonuses": [
+            "Откат Умений -5%"
+          ],
           "tier": 4,
           "index": 2
         },
@@ -5719,7 +5721,9 @@
           "iconId": "93276",
           "maxLevel": 1,
           "requiredPoints": 27,
-          "levelBonuses": [],
+          "levelBonuses": [
+            "Откат Умений -5%"
+          ],
           "tier": 4,
           "index": 1
         },
@@ -6446,8 +6450,6 @@
           "maxLevel": 3,
           "requiredPoints": 24,
           "levelBonuses": [
-            "Откат Умений -1%",
-            "Откат Умений -3%",
             "Откат Умений -5%"
           ],
           "tier": 3,
@@ -6816,8 +6818,6 @@
           "maxLevel": 3,
           "requiredPoints": 24,
           "levelBonuses": [
-            "Откат Умений -1%",
-            "Откат Умений -3%",
             "Откат Умений -5%"
           ],
           "tier": 3,
@@ -7667,7 +7667,9 @@
           "iconId": "93276",
           "maxLevel": 1,
           "requiredPoints": 27,
-          "levelBonuses": [],
+          "levelBonuses": [
+            "Откат Умений -5%"
+          ],
           "tier": 4,
           "index": 2
         },
@@ -8365,8 +8367,6 @@
           "maxLevel": 3,
           "requiredPoints": 24,
           "levelBonuses": [
-            "Откат Умений -1%",
-            "Откат Умений -3%",
             "Откат Умений -5%"
           ],
           "tier": 3,
@@ -9530,8 +9530,6 @@
           "maxLevel": 3,
           "requiredPoints": 24,
           "levelBonuses": [
-            "Откат Умений -1%",
-            "Откат Умений -3%",
             "Откат Умений -5%"
           ],
           "tier": 3,
@@ -9979,7 +9977,9 @@
           "iconId": "93276",
           "maxLevel": 1,
           "requiredPoints": 27,
-          "levelBonuses": [],
+          "levelBonuses": [
+            "Откат Умений -5%"
+          ],
           "tier": 4,
           "index": 1
         },
@@ -10765,7 +10765,9 @@
           "iconId": "93276",
           "maxLevel": 1,
           "requiredPoints": 27,
-          "levelBonuses": [],
+          "levelBonuses": [
+            "Откат Умений -5%"
+          ],
           "tier": 4,
           "index": 2
         },
@@ -11075,8 +11077,6 @@
           "maxLevel": 3,
           "requiredPoints": 24,
           "levelBonuses": [
-            "Откат Умений -1%",
-            "Откат Умений -3%",
             "Откат Умений -5%"
           ],
           "tier": 3,
@@ -11537,7 +11537,9 @@
           "iconId": "93276",
           "maxLevel": 1,
           "requiredPoints": 27,
-          "levelBonuses": [],
+          "levelBonuses": [
+            "Откат Умений -5%"
+          ],
           "tier": 4,
           "index": 2
         },
@@ -12297,7 +12299,9 @@
           "iconId": "93276",
           "maxLevel": 1,
           "requiredPoints": 27,
-          "levelBonuses": [],
+          "levelBonuses": [
+            "Откат Умений -5%"
+          ],
           "tier": 4,
           "index": 1
         },
@@ -12695,7 +12699,9 @@
           "iconId": "93276",
           "maxLevel": 1,
           "requiredPoints": 27,
-          "levelBonuses": [],
+          "levelBonuses": [
+            "Откат Умений -5%"
+          ],
           "tier": 4,
           "index": 2
         },
@@ -13067,7 +13073,9 @@
           "iconId": "93276",
           "maxLevel": 1,
           "requiredPoints": 27,
-          "levelBonuses": [],
+          "levelBonuses": [
+            "Откат Умений -5%"
+          ],
           "tier": 4,
           "index": 1
         },
@@ -13465,7 +13473,9 @@
           "iconId": "93276",
           "maxLevel": 1,
           "requiredPoints": 27,
-          "levelBonuses": [],
+          "levelBonuses": [
+            "Откат Умений -5%"
+          ],
           "tier": 4,
           "index": 2
         },
@@ -14162,8 +14172,6 @@
           "maxLevel": 3,
           "requiredPoints": 24,
           "levelBonuses": [
-            "Откат Умений -1%",
-            "Откат Умений -3%",
             "Откат Умений -5%"
           ],
           "tier": 3,
@@ -14567,8 +14575,6 @@
           "maxLevel": 3,
           "requiredPoints": 24,
           "levelBonuses": [
-            "Откат Умений -1%",
-            "Откат Умений -3%",
             "Откат Умений -5%"
           ],
           "tier": 3,

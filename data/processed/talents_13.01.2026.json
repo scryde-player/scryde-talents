@@ -1,6 +1,6 @@
 {
   "version": "13.01.2026",
-  "generatedAt": "2026-01-15T10:06:47.056Z",
+  "generatedAt": "2026-01-15T10:15:13.044Z",
   "common": {
     "berserk": {
       "id": "berserk",
@@ -12281,7 +12281,7 @@
           "abilityId": 17,
           "skillId": 93582,
           "name": "Soultaker Swap",
-          "description": "",
+          "description": "Меняет вас местами с целью.",
           "iconId": "93582",
           "maxLevel": 1,
           "requiredPoints": 27,

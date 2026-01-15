@@ -1,6 +1,6 @@
 {
   "version": "13.01.2026",
-  "generatedAt": "2026-01-15T10:00:42.066Z",
+  "generatedAt": "2026-01-15T10:06:47.056Z",
   "common": {
     "berserk": {
       "id": "berserk",
@@ -3062,7 +3062,7 @@
           "abilityId": 22,
           "skillId": 93577,
           "name": "Doombringer Pride",
-          "description": "",
+          "description": "Во время действия умения МР не расходуется. Дарует неуязвимость к умениям, вынуждающим атаковать.",
           "iconId": "93577",
           "maxLevel": 1,
           "requiredPoints": 28,

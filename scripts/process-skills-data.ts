@@ -288,6 +288,44 @@ function parseSkillsFull(content: string): Map<string, string[]> {
   return bonuses;
 }
 
+/**
+ * Парсит manual_descriptions.txt для получения ручных описаний
+ * Формат: skillId\tname\tdescription (табуляция, как в skills_brief.txt)
+ */
+function parseManualDescriptions(content: string): Map<
+  number,
+  { name?: string; description: string }
+> {
+  const manualData = new Map<number, { name?: string; description: string }>();
+
+  const lines = content.split(/\r?\n/);
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (!trimmed) continue;
+
+    // Разделяем по табуляции (формат: ID\tназвание\tописание)
+    const parts = trimmed.split("\t").map((p) => p.trim()).filter((p) => p.length > 0);
+
+    if (parts.length >= 2) {
+      const skillId = parseInt(parts[0], 10);
+      if (!isNaN(skillId)) {
+        if (parts.length >= 3) {
+          // Есть ID, название и описание
+          const name = parts[1];
+          const description = parts.slice(2).join("\t"); // На случай если в описании есть табуляции
+          manualData.set(skillId, { name, description });
+        } else {
+          // Только ID и описание (без названия)
+          const description = parts[1];
+          manualData.set(skillId, { description });
+        }
+      }
+    }
+  }
+
+  return manualData;
+}
+
 // ============================================================================
 // СОЗДАНИЕ SKILLSET
 // ============================================================================
@@ -300,6 +338,7 @@ function createSkillset(
   abilities: ParsedAbility[],
   briefDescriptions: Map<number, string>,
   levelBonuses: Map<string, string[]>,
+  manualDescriptions?: Map<number, { name?: string; description: string }>,
 ): SkillsetData {
   // Сортируем по abilityId для правильного порядка
   const sortedAbilities = [...abilities].sort(
@@ -307,7 +346,23 @@ function createSkillset(
   );
 
   const skills: SkillData[] = sortedAbilities.map((ability, index) => {
-    const description = briefDescriptions.get(ability.skillId) || "";
+    // Сначала берём описание из обычного файла
+    let description = briefDescriptions.get(ability.skillId) || "";
+    let name = ability.name;
+
+    // Применяем ручные описания с приоритетом
+    if (manualDescriptions) {
+      const manualData = manualDescriptions.get(ability.skillId);
+      if (manualData) {
+        // Перезаписываем описание
+        description = manualData.description;
+        // Перезаписываем название если есть
+        if (manualData.name) {
+          name = manualData.name;
+        }
+      }
+    }
+
     const bonuses = levelBonuses.get(ability.descriptionsAddress) || [];
 
     // Вычисляем tier и index в tier
@@ -317,7 +372,7 @@ function createSkillset(
     return {
       abilityId: ability.abilityId,
       skillId: ability.skillId,
-      name: ability.name,
+      name,
       description,
       type: undefined, // Пока не заполняем
       iconId: ability.iconId,
@@ -432,6 +487,22 @@ function main(): void {
   console.log(`  Кратких описаний: ${briefDescriptions.size}`);
   console.log(`  Записей с бонусами: ${levelBonuses.size}`);
 
+  // Парсим ручные описания (если файл существует)
+  const manualDescriptionsPath = path.join(rootDir, "data", "raw", "manual_descriptions.txt");
+  let manualDescriptions: Map<
+    number,
+    { name?: string; description: string }
+  > | undefined = undefined;
+
+  if (fs.existsSync(manualDescriptionsPath)) {
+    console.log("\n📝 Парсинг ручных описаний...");
+    const manualContent = fs.readFileSync(manualDescriptionsPath, "utf-8");
+    manualDescriptions = parseManualDescriptions(manualContent);
+    console.log(`  Ручных описаний: ${manualDescriptions.size}`);
+  } else {
+    console.log("\n📝 Файл manual_descriptions.txt не найден, пропускаем");
+  }
+
   // Собираем все используемые иконки
   const usedIconIds = new Set<string>();
 
@@ -500,6 +571,7 @@ function main(): void {
       normalizedAbilities,
       briefDescriptions,
       levelBonuses,
+      manualDescriptions,
     );
 
     classSkillsets[professionId] = skillset;
@@ -516,12 +588,14 @@ function main(): void {
         berserkAbilities,
         briefDescriptions,
         levelBonuses,
+        manualDescriptions,
       ),
       guardian: createSkillset(
         "guardian",
         guardianAbilities,
         briefDescriptions,
         levelBonuses,
+        manualDescriptions,
       ),
     },
     classes: classSkillsets,

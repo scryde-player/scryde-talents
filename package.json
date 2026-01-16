@@ -10,10 +10,10 @@
     "process-skills": "tsx scripts/process-skills-data.ts"
   },
   "dependencies": {
-    "next": "15.5.0",
+    "next": "^15.5.1",
     "pg": "^8.16.3",
-    "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react": "^19.1.2",
+    "react-dom": "^19.1.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -23,7 +23,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.5.0",
+    "eslint-config-next": "^15.5.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
     "prettier": "^3.6.2",
